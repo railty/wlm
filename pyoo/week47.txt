@@ -1,0 +1,491 @@
+WM	Current_Price	Store	Prod_Name	Prod_Alias	RegPrice	OnSalePrice
+30053614  	4.97	ALP	Berry Lovers Blackberry	黑莓	1.69	1.69
+30050682  	3.97	ALP	Jet Fresh Blueberries	藍莓	3.99	3.99
+30083889  	4.97	ALP	Fresh Goldenberries		3.59	3.59
+30506056  	1.97	ALP	Shallot	紅蔥頭	0.79	0.79
+30050689  	6.97	ALP	BerryMax	藍莓	3.99	3.99
+30083726  	4.97	ALP	FIGS		2.99	2.99
+30757569  	1.97	ALP	Riga Farms Black Kale #3166	西人芥蘭	1.99	1.99
+30099999  	2.97	ALP	Korean Persimmon(Bag)	袋裝韓國富貴柿	1.99	1.99
+30207853  	9.97	ALP	Longan		3.59	3.59
+30097119  	2.97	ALP	Saturn Flat White Peach	扁桃	3.99	3.99
+30057245  	4.97	ALP	Cherri Yum Cherry Plums		4.99	4.99
+30746800  	8.97	ALP	King Oyster Baby Mushroom	皇子菰	8.99	8.99
+30751916  	2.97	ALP	Baby King Oyster Mushroom	本地小皇子菇	2.99	1.99
+30751919  	3.97	ALP	Sliced King  Oyster  Mushroom	切片皇子菇	2.99	2.50
+30751926  	5.97	ALP	Local Baby King Oyster Mushroom	本地小皇子菇	2.99	2.99
+30757560  	3.97	ALP	Enviro Baby King Oyster Mushrooms		2.99	2.99
+30762958  	2.97	ALP	Enviro Baby King Oyster Mushrooms		2.59	2.59
+30763228  	2.57	ALP	Fresh  Enviro Mushrooms(Enoki)		1.59	1.59
+30757566  	3.57	ALP	Organic Enviro Black Oyster Mushroom		2.99	2.99
+30506144  	2.97	ALP	Fresh Shallots		1.99	1.99
+30506669  	3.97	ALP	Cesares Yellow Pearl Onion		2.99	2.99
+30506671  	4.97	ALP	Cesares Organic Shallots		3.99	3.99
+30050734  	3.97	ALP	Organic Blueberries	藍莓	1.99	0.00
+30207847  	9.97	ALP	Kaki Persimmon		3.59	3.59
+30100005  	4.97	ALP	Carrousel Kaki Persimmon	盒裝西班牙高身柿	3.99	3.99
+30100007  	5.97	ALP	Fuyu Persimmon	富貴	4.99	4.99
+30033113  	8.97	ALP	Organic Apricot		6.99	6.99
+30512069  	2.97	ALP	Organic Alliance Grape Tomatoes		1.79	1.79
+30084575  	3.97	ALP	Sweet Babies Seedless Table Grapes		3.28	3.28
+30084576  	3.97	ALP	Sweet Babies Seedless Table Grape		3.59	3.59
+30763526  	3.97	ALP	BABY PORTABELLA	靈芝菇	2.99	0.00
+30757581  	3.97	ALP	Windmill Farms		2.99	0.00
+30757602  	3.97	ALP	Organic Sliced White Mushroom		2.29	2.29
+30757613  	3.97	ALP	Organic Portobello Sliced Mushroom		2.99	2.99
+30207851  	9.97	ALP	Fresh Taste Figs		3.99	3.99
+30758496  	1.97	ALP	Brown Shimeji Mushroom	松茸菇	1.29	1.29
+30758514  	1.97	ALP	Shimeji Mushroom	松茸菇	1.29	1.29
+30760492  	1.97	ALP	Greenpeace White Shimeji Mushroom	松茸菇	1.29	1.29
+30098116  	25.97	ALP	Ataulfo Mango(Pack )	呂宋芒(盒裝)	12.99	9.99
+30098131  	25.97	ALP	Fat Cat Ataulfo  Mango	原箱呂宋芒(12個)              	11.99	11.99
+30083562  	2.97	ALP	Buenas Green Tamarind Fruit	甜酸子	1.99	0.00
+30083667  	2.97	ALP	BDMP Sweet& Sour Tamaring	甜酸子	1.99	1.99
+30095581  	5.97	ALP	Origanic Kiwi(pack)	盒裝奇異果	2.99	2.99
+30506940  	3.97	ALP	FreshFirst  Sugar Snap Peas	包裝蜜豆	0.59	0.00
+30057250  	5.97	ALP	Organic  Black Angelino Plums		5.99	5.99
+30762855  	3.97	ALP	Organic Select Organic Ginger		3.99	3.99
+30506728  	4.97	ALP	Organic Shallots		3.99	3.99
+30084590  	8.97	ALP	Peony Black Seeded Table Grapes(6lbs)	韓國黑加侖提(6lbs)	8.99	0.00
+30084591  	3.97	ALP	Red Sedless Grapes		2.99	0.00
+30761690  	4.57	ALP	Hokto King Trumpet Mushrrom		3.59	3.59
+30761693  	2.97	ALP	Organic White Beech Mushroom		1.59	1.59
+31231418  	15.37	ALP	Fresh Durian	新鮮榴槤	6.99	6.99
+31231412  	4.34	ALP	Chinese Madarin	中國蘆柑	1.08	1.08
+31231433  	12.97	ALP	Jumbo Seeded Watermelon (#4031x)	特大西瓜 (x)	2.99	2.99
+30098127  	6.55	ALP	Honey Belle Pear	糖心啤梨	2.59	2.59
+31231428  	2.87	ALP	Persimmons	富貴柿	1.29	1.29
+30084597  	8.75	ALP	Large Green Grape	有核大青提	1.59	1.59
+30042463  	0.97	ALP	Bag Avocado	袋裝牛油果	2.99	2.99
+31231408  	9.97	ALP	Strawberries		3.59	3.59
+30096542  	7.23	ALP	Flat White Peach	扁桃	2.99	2.99
+31231423  	50.64	ALP	Jamaican Papaya	原箱牙買加木瓜	22.99	22.99
+30100010  	2.97	ALP	Korean Persimmons	韓國柿子3粒裝	1.29	1.29
+30056229  	6.55	ALP	Sugar Plum	甜布霖	1.59	1.59
+30083173  	13.16	ALP	Roseapple	蓮霧	6.59	6.59
+30056177  	4.34	ALP	Strawberry Plum#3126	士多啤梨布霖#3126	0.99	0.99
+30099294  	2.57	ALP	Honey Belle	糖心碑梨	5.99	5.99
+30082956  	8.75	ALP	Dates		3.99	3.99
+30095028  	2.14	ALP	Spy  Apple	本地蘋果	0.29	0.29
+30083052  	10.96	ALP	Monk Fruit (Luo Han Guo)	羅漢果	2.99	2.99
+30096342  	37.41	ALP	Haiti Mango	海地芒	2.59	2.59
+31231430  	8.75	ALP	Sweet Dates	蜜棗	0.99	0.99
+30083194  	8.75	ALP	Indian Dates	印度?	2.99	2.99
+30082786  	8.75	ALP	Indian Dates	印度?	2.99	2.99
+30082970  	10.96	ALP	Hawthorn	水果山楂	3.99	2.99
+30100081  	4.34	ALP	Minneola	橙桔	1.29	1.29
+30094113  	4.34	ALP	Blood Orange(#4390)	血橙	1.29	1.29
+30096537  	13.16	ALP	Chinese Lucky Bamboo	發財富貴竹	2.99	2.99
+31231410  	8.75	ALP	Flower	劍蘭	2.99	2.99
+31231517  	6.55	OFC	Amaranth (Red Stripe)	紅莧菜	3.29	0.00
+30082697  	2.97	OFC	Fresh Coconut	新鮮椰青	3.99	1.59
+31231406  	4.97	OFC	Blackberries	黑莓	1.99	1.29
+30082798  	8.75	OFC	Bread Fruit	麵包果	1.99	0.00
+31231509  	13.16	OFC	Snow Pea Tip	豆 苗	3.99	0.00
+31231438  	15.37	OFC	Jamaica Jujude	牙買加蜜棗	2.99	0.00
+30056179  	5.67	OFC	Flower Queen Plum	雪花布霖	2.59	0.00
+30762881  	4.34	OFC	Fresh Aloe	新鮮蘆薈	2.99	0.00
+30762265  	8.75	OFC	Fresh Banana Leaves	新鮮香蕉葉	1.59	0.00
+30515108  	4.34	OFC	Green Turnip	青籮蔔	1.29	0.69
+30508505  	1.97	OFC	Red Pepper (In Bag)           	包裝紅椒                      	0.99	0.99
+31231426  	5.67	OFC	Golden Pear	黃金梨	0.99	0.00
+30095715  	8.75	OFC	Longan(Red Bag)	龍眼(紅袋)	2.98	0.00
+31231442  	8.75	OFC	Longan(Red Bag)	龍眼(紅袋)	2.98	0.00
+31227505  	2.14	OFC	Sweet Yam (S)	甜蕃薯(小)	2.29	0.00
+30043845  	8.75	OFC	Vietnamese Bananas	越南大蕉	1.99	0.00
+30506745  	17.57	OFC	Sugar Snap Peas	蜜  豆	1.99	0.00
+31231488  	13.16	OFC	Green Ton Choy	青通	2.59	0.00
+31235997  	5.67	OFC	Baby Mustard	芥菜仔	1.49	0.00
+30504626  	3.02	OFC	U.S Tomatoes	美國番茄	0.88	0.00
+31231487  	13.16	OFC	White Ton Choy	本地白通菜	2.79	0.00
+31231492  	8.75	OFC	Ton Ho Choy	蓎蒿菜(大葉)	2.29	0.00
+30099246  	5.97	OFC	Green Pear                    	袋裝青啤梨                    	2.99	2.99
+30514437  	2.80	OFC	Little Bear Kale	西人芥蘭	2.59	0.00
+30515110  	4.34	OFC	Indian Turnip	印度白蘿蔔	1.29	0.79
+30757606  	4.34	OFC	Indian Turnip	印度白蘿蔔	1.29	0.79
+31231422  	6.55	OFC	Jack Fruit	菠蘿蜜	2.99	0.00
+31231513  	3.90	OFC	Salad Tomatoes	沙拉蕃茄	0.99	0.00
+31231474  	8.75	OFC	Taiwan Okra	臺灣勝瓜	1.99	0.00
+30098140  	25.97	OFC	Ataulfo  Mango	原箱呂宋芒 (20粒)	9.99	11.99
+30504700  	1.97	OFC	Cherry Tomato	珍珠番茄(盒)	1.29	0.00
+31231516  	10.96	OFC	Green Amaranth	青紅莧菜	2.59	0.00
+31231415  	13.16	OFC	Red Dragon Fruit	紅肉火龍果	6.99	0.00
+31231416  	21.98	OFC	Red Dragon Fruit	紅肉火龍果	6.99	0.00
+30515238  	3.97	OFC	Sunset Tomatoes               	番茄盒裝                      	0.99	0.99
+31231494  	6.55	OFC	A A Choy	A A 菜	2.39	0.00
+31231500  	8.75	OFC	Sweet Potato Leaves	蕃薯葉	3.99	0.00
+30762518  	8.75	OFC	Sweet Potato Leaves	蕃薯葉	3.99	0.00
+30757577  	2.14	OFC	Soya Bean Sprout	大豆芽菜	1.29	0.89
+31231472  	2.14	OFC	Soya Bean Sprout	大豆芽菜	1.29	0.89
+31231421  	4.34	OFC	Jack Fruit	菠蘿蜜	2.99	4.99
+31231473  	6.55	OFC	Gai Lan Tips	芥蘭苗	2.59	0.00
+31231510  	2.14	OFC	White Radish	白蘿蔔	0.69	0.00
+30757588  	1.97	OFC	Organic Certificate Soy Bean Sprouts	豆芽(500g)	1.29	0.89
+31231496  	8.75	OFC	Chinese Leek	唐 蒜	2.59	0.00
+30043285  	6.55	OFC	Vietnamese Banana	越南大蕉	1.99	1.59
+31231508  	2.57	OFC	Peking Green Onion	京 蔥	1.69	0.99
+30083176  	10.96	OFC	Sweet  Sapodira	南美人參果	2.99	2.99
+31227508  	1.70	OFC	Butter Cub                    	扁形南瓜                      	0.99	0.99
+30778613  	1.97	OFC	Purple Cabbage	紫椰菜	0.99	0.00
+31231471  	6.55	OFC	Long Bean	長白豆角	2.29	0.00
+31231519  	2.80	OFC	Winter Melon	冬  瓜	0.99	0.00
+31231511  	6.55	OFC	Spinach	菠 菜(有頭)	2.59	0.00
+31231514  	6.55	OFC	Fresh Peanut	新鮮花生	1.28	0.00
+31235991  	6.55	OFC	Eggplant	茄瓜	1.29	0.00
+31231490  	8.75	OFC	Malabar Spinach	潺菜	2.59	0.00
+30082790  	13.16	OFC	Dragon Fruit	散裝火龍果	1.99	0.00
+30762871  	6.55	OFC	Snake Squash	蛇瓜	1.99	1.99
+30760495  	1.97	OFC	Chinese Cucumber              	小唐青瓜                      	0.49	0.49
+31231522  	1.77	OFC	GREEN MANGO	青芒果	1.99	0.00
+31227492  	2.97	OFMM	Andy Boy Broccoli Rabe-Rappini	西人芥蘭                      	1.59	0.99
+30083344  	13.16	OFC	Bon Bon Vietnam (Trai Dau)	越南黃皮	5.99	4.99
+30523779  	1.92	OFC	Plantain (yellow)	黃大蕉	0.99	0.00
+30096923  	8.75	OFC	Hyden Mango	萍果芒	2.29	0.00
+30080329  	6.55	OFC	Honey Madarin                 	蘆柑桔                        	0.79	0.79
+30515228  	8.75	OFC	Water Chestnut Pack	網袋裝馬蹄	2.59	0.00
+31227562  	4.34	OFC	Kingo Nut                     	鮮白果                        	1.29	1.29
+31231495  	4.34	OFC	Long Nappa	長紹菜	0.99	0.00
+30097113  	1.97	OFC	St. Carlos Kent Mango (Box)	原箱萍果芒	14.99	0.00
+31231485  	6.55	OFC	Choy Mue Shanghai	上海白菜苗	1.99	0.00
+31227515  	5.00	OFC	Jicama	沙  葛	1.59	0.00
+31231534  	4.34	OFC	Purple Turnips	紫色菜頭	0.99	0.00
+31231489  	6.55	OFC	Yu Choi Tip	油菜苗	2.49	0.00
+30039611  	1.37	OFC	Delicia Avocado	牛油果	1.29	0.00
+31231484  	4.34	OFC	Bok Choy	奶油白菜	1.59	0.00
+30080648  	4.34	OFC	Sweet Tangerine	智利蜜橘	1.99	0.00
+30083171  	10.96	OFC	Red Fruit	紅果	1.29	0.00
+31231526  	4.34	OFC	Korean Cabbage	高麗菜(包裝)	1.29	0.00
+30762857  	8.75	OFC	Taro Leaves	芋 葉	2.99	0.00
+31231482  	8.75	OFC	Taro Leaves	芋 葉	2.99	0.00
+30098169  	5.67	OFC	CA Small Orange               	加州小橙                      	1.00	1.00
+31231414  	1.97	OFC	Green Coconut	青椰子	2.99	0.00
+31231413  	4.34	OFC	Clementine	松皮橘	1.99	0.00
+31231453  	20.97	OFC	Figs	無花果	9.99	0.00
+30505173  	1.57	OFC	Gourmet Tomato                	盒裝番茄                      	0.99	0.99
+31231504  	2.57	OFC	Garlic Stem	蒜  芯	1.19	2.99
+30083887  	4.97	OFC	Golden Berries	黃金啤梨	2.99	1.99
+30762880  	6.55	OFC	Fresh Fennel                  	西人香芹                      	1.59	1.59
+30508493  	2.97	OFC	Super Sweet Yellow Tomatoes   	超甜黃番茄                    	0.99	0.99
+31231505  	10.96	OFC	White Skin Purple Heart Yam	白皮紫芯番薯	2.59	0.00
+30059879  	13.16	OFC	Thailand Rambutan	泰國紅毛丹	1.99	0.00
+31231483  	4.34	OFC	Local Taiwan Bok Choy	臺灣白菜	1.59	0.99
+31231435  	10.96	OFC	Honey Dates	紅棗	1.98	0.00
+30097302  	2.97	OFC	OKF Black Tea Peach & Aloe Bits		2.99	0.00
+31231419  	5.97	OFC	Chirimoya	歐洲番荔枝	5.99	0.00
+31231407  	4.97	OFC	Raspberries	紅莓	2.99	2.99
+30095751  	8.75	OFC	Yellow peach	本地黃毛桃	2.99	0.00
+31231434  	6.97	OFC	Watermelon 	青皮西瓜	3.99	2.99
+30762261  	3.97	OFC	Fresh Peeled Garlic	新鮮去皮蒜肉(2lbs)	3.99	0.00
+30510510  	2.97	OFC	Amorosa Mini Tomato           	盒裝有枝小番茄                	2.99	2.99
+31231497  	10.96	OFC	Chive Flower	韭菜花	0.99	0.00
+31227509  	4.34	OFC	Chayote	合掌瓜(散)	0.29	0.00
+30769405  	0.97	OFC	Bean Sprouts	黃豆芽	1.29	0.89
+30095596  	12.97	OFC	Caliman Papaya (Brazil)	巴西木瓜(箱)	10.99	8.99
+31231440  	15.37	OFC	Milk Fruit	牛奶果	5.99	0.00
+30056186  	6.55	OFC	Pear Plum(s)                  	雪梨布罧(小)                  	1.29	1.29
+30762231  	6.55	OFC	Lotus Roots	蓮  藕	1.99	0.00
+30099237  	4.97	OFC	Yellow Honey Daw (Big)        	大黃皮瓜                      	4.59	1.99
+30099189  	5.45	OFC	Bosc  Pear	灰啤梨	1.79	0.00
+30043641  	6.55	OFC	Manzano Banana(Bag)	牛奶蕉(包裝)	1.59	0.00
+31235995  	6.55	OFC	Spinach	菠菜(扎)	1.79	0.00
+30761710  	2.27	OFC	Fresh Peeled Mini Carrots	紅蘿蔔仔(1LB )	1.29	1.29
+31235993  	6.55	OFC	Sweet Yam (L)	甜番薯(大)	1.59	0.00
+30519614  	2.98	OFC	Snow Pear                     	雪豆                          	0.99	0.99
+31231506  	1.97	OFC	Garlic Meat	蒜肉	5.99	2.99
+30095746  	12.97	OFC	Caliman Papaya (Brazil)	巴西木瓜(箱)	10.99	8.99
+31231480  	8.75	OFC	Winter Bamboo Shoot	冬  筍	4.99	0.00
+30099995  	1.97	OFMM	Varity Triumph Persimmons	盒?柿子	0.79	0.00
+31231498  	3.97	OFC	Coconut	老椰子	1.59	1.29
+31231518  	4.34	OFC	Fuzzy Squash	毛瓜	1.39	0.00
+31231439  	15.37	OFC	Vietnam Date	越南蜜棗	5.99	0.00
+31231425  	5.67	OFC	Apple Pear	蘋果梨	5.00	0.00
+30746755  	1.97	OFC	Essex Kent Sliced Mushrooms   	切片蘑菇                      	1.29	1.29
+31231499  	6.55	OFC	Cucumber	大黃瓜	0.99	0.00
+30096540  	4.34	OFC	Yellow Peaches	黃毛桃	4.29	0.00
+30099262  	4.97	OFC	Sweet Golden Honeydew         	金黃蜜瓜                      	1.99	1.99
+30762861  	6.55	OFC	Banana Flower	香蕉花	1.99	0.00
+31231501  	6.55	OFC	Banana Flower	香蕉花	1.99	0.00
+30506747  	15.37	OFC	Snow Pea	雪  豆	1.28	0.00
+31236014  	4.34	OFC	Chinese Okra	勝瓜	0.99	0.99
+31231431  	4.34	OFC	Sugar Cane	甘蔗	1.99	0.00
+30751923  	5.97	OFMM	Baby Artichokes	百合花	1.99	0.00
+30769928  	0.97	OFMM	BEAN SPROUT (bag)	包裝芽菜	0.79	0.00
+30754581  	2.97	OFMM	Shiitake Mushroom	本地松茸菇	1.99	1.99
+30083722  	1.97	OFMM	Dried Fig Figues	幹無花果	0.99	0.00
+30746752  	2.97	OFMM	Ravine Crimini Mushrooms	咖啡菇	2.99	0.00
+30099994  	6.97	OFMM	Persimmon (Box) (8 Pcs)	原箱富貴柿 (8粒)	4.99	9.99
+30757594  	2.97	OFMM	Chestnut	栗 子	0.99	0.00
+30032197  	4.97	OFMM	Sweet Apricot	甜杏	2.99	1.59
+30762874  	1.57	OFMM	Fresh Ginkgo	銀杏仁	0.79	0.00
+30092759  	5.97	OFMM	Jersey Mac Apple  	袋裝蘋果   	2.99	0.00
+30100028  	4.97	OFMM	Persimmon#4428	袋裝富貴柿(5個裝)	1.99	1.99
+30507785  	7.87	OFMM	Bone In Beef	有骨牛肉	2.29	0.00
+30504957  	2.97	OFMM	Suntastic Tomatoes	盒裝溫室番茄	0.79	0.00
+30510513  	2.97	OFMM	Grape Roma Tomato	羅馬小番茄	1.99	0.00
+30079247  	15.97	OFMM	Cactus Pears(Pack)	盒裝仙人果	9.99	9.99
+30757583  	2.57	OFMM	Alfalfa Sprout	芽  菜	1.49	0.39
+30761675  	1.97	OFMM	Laisla Tree Cucumber	青瓜仔	0.99	0.00
+30092407  	4.97	OFMM	STEMITT GALA APPLES 	袋裝皇室蘋果	3.99	0.00
+30098060  	3.97	OFMM	Hyden Mango	小箱蘋果芒	2.99	3.88
+30083490  	2.97	OFMM	Sweet &sour Tamarind 	甜酸子	0.99	0.00
+30065181  	2.97	OFMM	Seedless Watermelon(Red)	迷你小西瓜	1.99	1.99
+30746771  	1.97	OFMM	SUNQIAO Golden Mushroom	純白金針菇	0.88	0.88
+30510038  	2.97	OHS	Roma Plum	有枝番茄	2.59	0.00
+30760487  	4.57	OHS	Mini Oyster Mushroom	袖珍蠔菇	1.00	0.00
+30762521  	2.97	OHS	Peeled Garlic  250g	蒜肉 250g	1.00	4.99
+30099233  	4.34	OHS	A	新疆哈密瓜（小）	0.99	0.00
+31231409  	35.21	OHS	Pears	鴨嘴梨	1.29	0.00
+30084050  	3.97	ALP	Sunview Black Seedless Table Grapes	Organic	2.29	2.29
+30084113  	6.97	ALP	Black Seedless Table Grapes		4.99	4.99
+30100020  	2.97	ALP	Persimmon (Box)	盒裝富貴柿	2.99	2.99
+30079348  	30.97	ALP	Sweet Cherries(In Pack)	盒裝車喱子	2.97	2.97
+30057272  	6.97	ALP	Plum(In Box)	盒裝甜布霖	5.99	5.99
+30038827  	3.97	ALP	Luky 7's Avocado		2.99	2.99
+30083687  	20.97	ALP	Fresh Figs(In Box)	盒裝無花果	5.99	5.99
+30083688  	5.97	ALP	Figs	盒裝無花果	1.99	1.99
+30083695  	8.97	ALP	Kadota Fresh Figs		4.99	4.99
+30092751  	7.97	ALP	Golden apple(8LB In Bag)	袋裝黃蘋果	4.59	3.99
+30092755  	4.97	ALP	Nickels Orchards Empire Apple		2.99	2.99
+30092756  	5.97	ALP	Ontario Empire Apple	袋裝蘋果	1.99	0.00
+30092758  	5.97	ALP	Orchard Crisp Idared Apple	富士蘋果	1.99	0.00
+30084116  	5.97	ALP	Ontario Blue Grapes	黑葡萄	3.59	3.59
+30504770  	3.97	ALP	Organics Yellow Tomatoes		2.99	0.00
+30096946  	7.97	ALP	Big Yellow Peach (BOX)		7.99	7.99
+30084136  	4.97	ALP	Ontario Blue Grapes		3.59	3.59
+30757612  	5.97	ALP	Biologique Organic Beets		4.99	4.99
+30092980  	5.97	ALP	Ontario Fuji Apples(Bag)	袋裝本地富士蘋果	3.59	3.59
+30097117  	2.97	ALP	Ontario Yellow Peach		4.99	3.99
+30092982  	6.97	ALP	Algoma Orchard Cripps Pink		2.99	2.99
+30084141  	3.97	ALP	Ontario Blue Grapes	黑葡萄	3.59	3.59
+30757618  	2.97	ALP	Organic Collaed Greens		1.99	1.99
+30505169  	2.97	ALP	Roma Tomato(In Box)	盒裝有枝羅馬番茄	1.59	1.99
+30504643  	4.97	ALP	C.O.P Organic Sweet Onion	Product Of U.S.A	3.99	3.99
+30761669  	2.97	ALP	Tanimura & Antle Romaine Hearts	包裝牛利生菜(2顆)	0.69	0.69
+30768722  	1.97	ALP	Italy Gai Lan	意大利芥蘭	1.99	1.99
+30748096  	2.67	ALP	Organic Black KaLe Lacintao		2.69	2.69
+30504774  	2.57	ALP	Red Zoo Cherry Tomatoes	小番茄	2.59	2.59
+30505119  	2.97	ALP	Organic Grape Tomatoes	車里子番茄	2.99	2.99
+30080937  	5.97	ALP	Honey Murcotts		4.99	4.99
+30081273  	5.97	ALP	Clementines 	甜柑仔	4.99	0.00
+30762260  	3.97	ALP	Parsley Roots		3.99	3.99
+30519611  	2.98	ALP	Sugar Snap Peas	小包裝蜜豆	0.39	0.98
+30510512  	4.97	ALP	Orangic  Red Potatoes		3.99	3.99
+30748098  	2.67	ALP	Organic  Kale		2.99	2.99
+30505118  	2.97	ALP	COOKING ONION 2LBS	2磅裝洋蔥	0.99	0.99
+30508381  	2.97	ALP	Select 1 Rainbow Pepper		1.79	1.79
+30084375  	4.57	ALP	Red Seedless Grapes	盒裝無核紅提	0.99	0.99
+30087861  	2.97	ALP	Kalamata Natural Dried Figs	包裝干無花果	2.49	2.49
+30083675  	1.97	ALP	Jenny`s Dried  Figs	無花果干	0.99	0.99
+30762879  	7.97	ALP	Earthbound Farm Organic Jewel Yams		6.59	6.59
+30504724  	1.97	ALP	Earthbound Red Cherry Tomatoes		0.79	0.79
+30504728  	1.97	ALP	Organic Grape Tomatoes	車里子番茄	2.99	2.99
+30505675  	1.97	ALP	Grape Tomatoes	番茄	1.59	1.59
+30506023  	2.97	ALP	Baby Roma Tomatoes	小羅馬番茄	0.79	0.00
+30506054  	3.97	ALP	Grape Tomatoes	車里子番茄	2.59	2.59
+30506090  	3.97	ALP	Sweet Grape Tomatoes		2.59	2.59
+30506142  	3.97	ALP	Romana TOMATO	有枝盒裝番茄	0.99	1.59
+31227541  	1.97	ALP	Japan  Pickle Cucumber	包裝日本青瓜仔	1.59	1.59
+30506672  	1.57	ALP	Ole Cocktail Tomatoes		0.79	0.79
+30504776  	3.97	ALP	Harvest Fresh Cipolline Onion		2.99	2.99
+30748101  	2.47	ALP	Popi Chopped Kale		2.49	2.49
+30757593  	1.97	ALP	PH Food Organic Soybean Sprouts		1.99	1.99
+30083403  	3.97	ALP	Pearl Sweet & Sour Tamarind	珍珠牌特級甜酸子	3.48	3.48
+30506710  	4.97	ALP	Mucci Tomatoes on the Vine		4.99	4.99
+30506760  	2.97	ALP	Mucci Sweet Grape Tomatoes		2.59	2.59
+30507403  	2.97	ALP	Mucci Tomatoes	Blended Flav,	1.99	1.99
+30757578  	3.57	ALP	Dandy Meyer Sweet Lemons		3.59	3.59
+30762856  	3.97	ALP	Organic Ginger		2.99	2.99
+30505172  	3.97	ALP	Christopher Ranch Gold Pear Onions		2.99	2.99
+30505590  	3.97	ALP	Christopher Ranch White Pearl Onions		2.99	2.99
+30757616  	4.97	ALP	Organic Biologique Bunch Gold Beets		2.99	2.99
+30761688  	4.97	ALP	Cal-Organic Iceberg Lettuce		3.99	3.99
+30761692  	5.97	ALP	Cal-Organic Romaine Heart	包裝有機牛利生菜(3棵)	4.99	4.99
+30084476  	3.97	ALP	Empire Thomcord Table Grapes		3.99	3.99
+30084507  	3.97	ALP	Sun  Bellevable  Black Corinth Grapes		3.99	3.99
+30087779  	3.97	ALP	Natural Delights Med Jool Dates		3.99	3.99
+30082411  	6.97	ALP	Natural Delights Coconut		6.99	6.99
+30746749  	7.97	ALP	Almond	杏仁	7.99	6.99
+30064883  	6.97	ALP	Mini Yellow Watermelon	黃肉小西瓜	2.99	2.99
+30761698  	6.55	ALP	Mustard	細大芥菜                      	0.99	0.99
+30521737  	2.14	ALP	Taro in pack	真空大芋頭	1.99	1.99
+30521738  	2.14	ALP	Indian Small Eddoes 		2.99	2.99
+30768721  	1.97	ALP	Chen Tai Gai Lan Tips	陳太芥蘭苗	1.99	1.99
+30746743  	0.97	ALP	Enoki Mushroom	黃針菇	1.00	1.00
+30748106  	8.75	ALP	Jerusalem Artichoke		1.99	1.99
+31227506  	6.55	ALP	Indian Bitter Melon	印度苦瓜	2.99	2.99
+30507783  	6.55	ALP	Long Red Pepper	粗長紅椒	1.29	1.29
+31227504  	7.87	ALP	Jamican Sweet Potato	牙買加甜薯	3.59	0.00
+30757558  	6.55	ALP	Indian  Flat  Bean	印度夾豆	1.59	1.59
+30513189  	4.34	ALP	Golden Nugget #4767	紅色南瓜	0.99	0.99
+31227514  	6.55	ALP	Parsley Roots		1.99	1.99
+30510035  	1.48	ALP	Jamaican Cooking Banana	青蕉	1.99	1.99
+31227502  	6.55	ALP	Jamaica Sweet Yam		2.99	2.99
+30515111  	4.34	ALP	Young Turnip	小蘿蔔苗	0.99	0.99
+30082799  	8.75	ALP	Breadnut	麵包果	1.99	1.99
+30762875  	6.55	ALP	Fresh Yam	新鮮真空包裝淮山	2.99	2.99
+30504624  	3.90	ALP	Tomato Medley(Huy Farms)	Small	1.79	1.79
+30757600  	2.97	ALP	Golden Beets		1.79	1.79
+30064873  	8.75	ALP	In Shell Walnuts(Jumbo)		3.49	0.00
+30097456  	4.34	ALP	Rocha Pear #3024		1.59	1.59
+30082784  	3.97	ALP	Fresh Barhi Date		1.99	1.99
+31231450  	2.14	ALP	Organic Banana	有機香蕉	0.59	0.59
+30057619  	2.97	ALP	Florida Starburst Pummelo #3129		1.88	1.88
+30057683  	3.97	ALP	Pomelo Red Meat	紅肉柚	6.99	6.99
+31231411  	4.34	ALP	Suger Tangerine(in net)	沙糖桔	2.59	2.59
+30064943  	6.97	ALP	Yellow  Watermelon(small)	黃肉小西瓜	1.99	0.00
+30098422  	3.97	ALP	Small Golden Honeydew	小黃皮瓜	3.99	3.99
+30097861  	3.46	ALP	Asia Pear (packed)		1.59	1.59
+30095597  	4.97	ALP	Kiwi(box)	盒裝奇異果	3.59	3.59
+30064788  	4.34	ALP	Sugar Cane	黑蔗	0.99	0.99
+31231424  	2.14	ALP	White Peach 	白毛桃 白簽	1.68	1.68
+30057003  	5.67	ALP	Small Black Plum#4040	小黑布霖#4040	2.99	2.99
+31231427  	3.97	ALP	Hachiya Persimon	西班牙甜高身柿	0.99	0.99
+30097983  	1.97	ALP	Nanda Mango (-)	散裝呂宋芒	2.99	2.99
+30096340  	13.16	ALP	Mini Mango(Loose)	散裝豬腰芒	1.99	1.99
+30097631  	4.34	ALP	Mini Mango(Loose)	散裝豬腰芒	1.99	1.99
+30083281  	10.96	ALP	Loose Star Fruit	散裝楊桃	3.99	3.99
+30056178  	4.34	ALP	Small Prunes	小西梅	0.99	0.69
+31231429  	2.97	ALP	Small Prunes	小西梅	0.99	0.69
+30095749  	1.57	ALP	Yellow Passion Fruit #3312		2.59	2.59
+30097305  	25.97	ALP	Sweet Mango (white box)		8.99	8.99
+30098054  	5.67	ALP	HeBei Pear	河北香梨	1.59	0.99
+30095548  	6.55	ALP	Baby Papaya	甜木瓜	2.99	2.99
+30098161  	15.37	ALP	Mangosteen(Loose)	散裝山竹	2.99	2.99
+30095578  	2.14	ALP	Mexico Papaya(5PCS)	原箱墨西哥木瓜(5個)	3.99	3.99
+30095748  	6.55	ALP	Loose Loquat	散裝枇杷	1.99	3.99
+30098423  	10.96	ALP	Sutton Place  Melon	青皮蜜瓜	0.99	0.99
+30084615  	8.75	ALP	Black Seedless Grapes #4056	無核黑提	2.99	2.99
+30080652  	6.55	ALP	Kumquat (Pack)	包裝甜金桔	1.99	1.99
+30082860  	13.16	ALP	Colombia Guineps	哥倫比亞青龍眼	3.99	3.99
+30098096  	3.46	ALP	Angelys Pear		1.99	1.99
+30098438  	4.97	ALP	Sweet Hami Gold Melon	哈蜜瓜	1.29	1.29
+31231515  	5.67	ALP	Kudzu	粉葛	1.59	1.59
+31231507  	13.16	ALP	Young Ginger	子薑	3.99	3.99
+31231493  	8.75	ALP	Shanghai Tak Choy	上海塔菜	1.39	1.39
+31231481  	4.34	ALP	Arrowhead	茨  菇	1.29	1.29
+31231478  	13.16	ALP	Cow Kee	枸杞	2.59	2.59
+31231477  	8.75	ALP	Lin kock	菱角	2.59	2.59
+30746744  	2.57	ALP	White Mushroom	新鮮白蘑菇	1.00	1.00
+31231491  	8.75	ALP	Ton Ho Choye	大葉蓎蒿	2.59	2.59
+31231512  	10.96	ALP	Walnut	新鮮核桃	3.59	3.59
+31235891  	3.97	ALP	California Spring Garlic		2.99	2.99
+31231520  	4.34	ALP	AA Choy Sum	萵苣	1.99	1.99
+30762270  	5.97	ALP	Lily	鮮百合	4.99	4.99
+31231476  	10.96	ALP	Lily	鮮百合	4.99	4.99
+30762515  	6.55	ALP	Green Calalloo	青莧菜	0.99	0.99
+30762523  	6.55	ALP	Chili Pepper Leaves	辣椒葉	2.99	2.99
+30746747  	2.97	ALP	Oyster Mushroom	本地新鮮蠔菇	1.99	1.99
+31231521  	2.97	ALP	King Mushroom	碟裝杏鮑菇	1.99	1.99
+30762877  	6.55	ALP	Red Yam	西人紅芋	2.99	2.99
+30762268  	4.34	ALP	Amaranth  Tips(Green )	青莧菜苗	0.99	0.00
+30762273  	4.34	ALP	Amaranth  Tips(Green )	青莧菜苗	0.99	0.00
+30754580  	7.97	ALP	Purple Asparagus		5.99	5.99
+31236059  	4.34	ALP	Shanghai Choy	上海白菜(包裝)	0.59	0.59
+31236058  	4.34	ALP	Yu Choy (in Bag)	本地包裝精選油菜	1.59	0.00
+30512641  	3.46	ALP	Halloween Mix Small Pumpkin	鬼節奇形小南瓜	0.39	0.39
+31231503  	4.34	ALP	Garlic Stem Tip	蒜芯苗	0.99	0.99
+31235994  	6.55	ALP	Baby Bok Choy Tip	本地奶油白菜苗	1.99	1.38
+30762255  	13.16	ALP	HorseRadish Head Roots	蘿蔔根	5.99	5.99
+31235992  	6.55	ALP	Japan  Pickle Cucumber	盒裝日本青瓜仔	1.99	0.00
+31227511  	2.14	ALP	Pepper  Squash	椒瓜	1.99	1.99
+30515223  	4.34	ALP	Yellow Turnips	黃菜頭	0.99	0.99
+31231502  	6.55	ALP	Loose Indian BitterMelon	散裝印度苦瓜	2.59	2.59
+31237191  	6.55	ALP	Little Bear Collards Chou Cavalier	西人芥蘭	2.29	2.29
+31231475  	8.75	ALP	Pah Hah Flower	百合花	0.79	0.39
+30506758  	6.55	ALP	Green Pea	田豆	1.59	1.00
+30761714  	6.55	ALP	Waxed Squash	浦達瓜	1.99	1.99
+30515229  	13.16	ALP	Whole Winter Melon	原只 冬瓜                     	0.99	0.99
+31231535  	6.55	ALP	Chinese Yam	淮山	2.59	2.59
+30762864  	8.75	ALP	Long Bean Leaves	豆   葉                       	1.79	1.79
+30762858  	6.55	ALP	Indian Grass	印度草	1.00	1.00
+30757568  	8.75	ALP	Yellow Bean	黃豆仔	0.99	0.99
+31231479  	8.75	ALP	Pearl Onion		2.99	2.99
+30761672  	0.97	ALP	Small Pickle Cucumber		0.00	0.00
+30044243  	3.46	ALP	Small Banana	散裝粉蕉	0.99	0.00
+31231441  	8.75	ALP	Longan (Green Skin)	青皮龍眼	2.99	2.99
+30095594  	3.46	ALP	Sweet Papaya(loose)		1.09	1.09
+30084618  	10.96	ALP	Santa Elena Muscat Beauty Outstanding Grape	香檳小提子	4.99	4.99
+30746750  	1.97	ALP	Sliced Mushroom	蘑菇片	0.00	0.00
+30098959  	4.97	ALP	Loose Golden Melon	散裝黃金瓜	2.99	2.99
+30084628  	8.75	ALP	Seeded  Black  Grapes#4270	有核黑提#4270	2.99	2.99
+31231420  	4.97	ALP	Cherimoya		4.59	4.59
+31231436  	10.96	ALP	Juju Date	雞心棗	1.99	1.99
+30508377  	6.55	ALP	Pimento		0.00	0.00
+30513273  	1.97	ALP	Indian Pumpkin		0.00	0.00
+30099229  	5.00	ALP	Abate Petel Pear (Loose)#3012		2.59	2.59
+30507743  	6.55	ALP	Pepper	青指天椒	1.00	0.00
+30757572  	8.75	ALP	Purple Beans	紫色豆仔	1.29	0.00
+30761668  	4.34	ALP	Pork Butt  Shoulder Boneless		0.00	0.00
+31227503  	4.34	ALP	White Yam	南美小白薯	1.29	1.29
+30092993  	5.97	ALP	Stenilt Organic Green Apple	袋裝青蘋果	0.99	1.59
+30093310  	5.97	ALP	Local Golden Apple(Bag)	袋裝本地金黃蘋果	4.59	4.59
+30511612  	6.97	ALP	Baking Potatoes	黃薯仔(一袋)                  	3.99	3.99
+30512065  	6.97	ALP	Potato in Bag	袋裝薯仔                      	3.99	3.99
+30761679  	1.27	ALP	Carrots (1 pack)	袋裝紅蘿蔔(2lb)	0.99	0.99
+30778834  	1.97	ALP	Bolthouse Mini Carrots	迷 你 紅 蘿 蔔	0.99	0.99
+30079600  	3.97	ALP	Peeled Chestnut	栗子肉	2.99	2.99
+31231437  	13.16	ALP	Goose Berry		3.59	3.59
+30504621  	4.34	ALP	Sweet  Onion	甜洋蔥	1.59	1.59
+30517281  	4.34	ALP	Shallot Small	小洋蔥仔	1.99	1.99
+31231432  	4.97	ALP	Seedless Watermelon  (Double T)	無核西瓜	1.58	1.58
+30080328  	6.55	ALP	Sugar Tangerine (Loose)	散裝砂糖橘	1.68	1.68
+30083723  	3.97	ALP	Star South Figs		3.99	3.99
+30095525  	1.97	ALP	sunkist  Lemon		3.99	3.99
+30095527  	5.97	ALP	Organic Orange		4.99	4.99
+30757589  	4.97	ALP	Organic Limes	袋裝青檸檬	2.99	2.99
+30058081  	2.97	ALP	Small  Pomelo	小琯溪蜜柚	2.59	2.59
+30082785  	3.97	ALP	Parnoosh Delicious Pitted Dates		1.99	1.99
+30095528  	5.97	ALP	Arc-En-Ciel Produce Oranges	Product Of South Africa	2.99	2.99
+30751918  	3.97	ALP	Organic Jerusalem Artichokes		2.99	2.99
+30505674  	1.97	ALP	Red Shallot	紅蔥頭	0.79	0.79
+30505676  	4.97	ALP	Mike's Organic Onions		2.99	2.99
+30746756  	1.27	ALP	Enoki Mushroom	金針菇                        	1.29	1.29
+30746758  	2.57	ALP	Enoki Mushroom	新鮮金針菇	0.99	0.99
+30746759  	2.97	ALP	Fresh King Oyster Mushroom	袋裝皇子菇	1.99	1.99
+30746760  	2.97	ALP	Whimori King Oyster Mushroom		1.99	1.99
+30746762  	2.97	ALP	Guan's Brown Beech Mushroom		1.29	1.29
+30746763  	2.97	ALP	White Beech Guan's Mushrooms		1.29	1.29
+30758419  	3.57	ALP	Red Beets	小紅菜頭	2.59	2.59
+30758495  	2.97	ALP	Golden Beets With Leaves		1.99	1.99
+30759044  	3.97	ALP	Green Kohlrabi	有葉菜 果	2.99	2.99
+30758493  	2.97	ALP	Little Bear Collards	西人芥蘭	1.99	1.99
+30755710  	2.27	ALP	J & D Red Kale		2.99	2.99
+30757559  	2.97	ALP	Little Bear Red Kale		2.99	2.99
+30758504  	3.57	ALP	Organic Collard		1.99	1.99
+30515226  	3.97	ALP	Organic Turnip		3.99	3.99
+30762878  	4.97	ALP	Organic Beauregard Yams		3.99	3.99
+30507784  	1.97	ALP	Grape Tomatoes	車里子番茄	2.59	2.59
+30058380  	2.97	ALP	China Honey Pomelo	蜜柚	2.59	2.59
+30099251  	2.57	ALP	Scented Pear	盒裝新疆香梨	0.99	0.00
+30746764  	2.97	ALP	Beech Mushroom		1.29	1.29
+30746766  	4.97	ALP	Champlgnons Mushrooms	黃金針菇/皇子菇/貴子菇	1.99	1.99
+30746741  	1.97	ALP	Fresh Lotus Seed	鮮蓮子	0.79	0.79
+30762863  	2.77	ALP	White Nuts	白果仁	0.79	0.00
+30746767  	2.97	ALP	White Beech Mushroom	白玉菇	1.29	1.29
+30746768  	2.97	ALP	Brown Beech Mushroom	松栮菇/白玉菇	1.29	1.29
+30746770  	2.97	ALP	Dried Black Fungus	白背木耳絲	0.99	0.99
+30762868  	1.57	ALP	Kingo Nut	新鮮白果仁	0.99	0.79
+30762870  	1.57	ALP	Gingko Nuts	集翠鮮白果	0.79	0.79
+30746773  	1.97	ALP	White Mushroom	白雪菇	0.99	0.00
+30746776  	2.57	ALP	Happy Farm Enoki Mushroom	韓國金針菇	0.99	0.99
+30746779  	2.97	ALP	Happy Farm King Oyster Mushroom	皇子菇	1.99	1.99
+30746780  	2.97	ALP	Happy Farm King Oyster Mushroom	皇子菇	1.99	1.99
+30746787  	1.97	ALP	Brown Mushroom	咖啡菇	1.29	1.29
+30746788  	1.97	ALP	Golden/Flower Enoki	黃針菇/花針菇	1.00	1.00
+30746790  	3.97	ALP	Happy Farm Portabella Mushroom	靈芝菇	2.79	2.79
+30746793  	2.97	ALP	Golden Mushrom Oyster Mushroom	包裝新鮮蠔菇	1.99	1.99
+30760491  	3.97	ALP	EatSmart Broccoli	Fresh Cut	1.99	1.99
+30769927  	3.97	ALP	Mann's Green Beans		0.79	0.79
+30761716  	3.97	ALP	Romaine Hearts	牛利生菜	2.59	2.59
+30081244  	4.97	ALP	Clemntines	袋裝甜橘	3.99	3.99
+30092197  	7.97	ALP	Viva Tierra Organic Apples		3.99	3.99
+30092380  	4.97	ALP	Fuji Apple (Bag)	袋裝富士蘋果	4.59	4.59
+30092506  	11.97	ALP	Bridges Organic Braeburn Apples		11.99	11.99
+30096703  	1.27	ALP	Yellow Peach(2.2LB)	盒裝本地黃肉水蜜桃	1.29	0.00
+30092724  	4.97	ALP	Nickels Orchards Royal Gala	Product Of Ontario	3.99	3.99
+30094933  	6.97	ALP	WESTLAKE Florida Citrus	5LB佛羅里達甜橙	5.99	5.99
+30081249  	5.97	ALP	Sunkist Tangelos 5Lbs	新奇士橙柑(袋)	1.99	0.00
+30081262  	3.97	ALP	Clementines	小柑仔	2.99	2.99
+30094205  	2.97	ALP	Organic Grapefruit In Bag		2.99	2.99
+30083968  	3.97	ALP	Champagne Grape 	香檳小提	2.99	0.00
+30084045  	3.97	ALP	P.V.F. Concord Seedless Table Grapes		1.99	1.99
