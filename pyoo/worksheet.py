@@ -3,26 +3,15 @@ import signal
 import time
 import pdb
 import pyoo
+import json
+import sys
 
 def loadData(filename):
-    items = {}
-    in_file = open(filename, "rt")
-    in_line = in_file.readline()
-    header = in_line[:-1]
-    headers = header.split("\t")
+    with open(filename) as json_file:
+        items = json.load(json_file)
+    item = items[list(items.keys())[0]]
+    headers = list(item.keys())
 
-    while True:
-        in_line = in_file.readline()
-        if not in_line:
-            break
-        in_line = in_line[:-1]
-        data = in_line.split("\t")
-        item = {}
-        for i in range(0, len(headers)):
-            item[headers[i]] = data[i]
-
-        items[int(item['WM'])] = item
-    in_file.close()
     return (headers, items)
 
 def rgb(r, g, b):
@@ -42,7 +31,8 @@ def getColor(row):
         w = 0
     return red if g < w else green
 
-headers, items = loadData('week47.txt')
+weekExcel = sys.argv[1]
+headers, items = loadData('../data/output/wms.json')
 #print(items)
 
 cmd = 'soffice --accept="socket,host=localhost,port=2002;urp;" --norestore --nologo --nodefault' # --headless
@@ -58,7 +48,7 @@ while True:
         time.sleep (250.0 / 1000.0)
 
 #print(desktop)
-doc = desktop.open_spreadsheet("Week 47 Pricing Guide.xlsx")
+doc = desktop.open_spreadsheet(weekExcel)
 for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared Items - Require Review': 'Shared Worksheet'}.items():
     print(sheet + '-->' + worksheet)
     doc.sheets.copy(sheet, worksheet, len(doc.sheets))
@@ -79,10 +69,10 @@ for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared I
         itemNum = sheet[iRow, colItemNum].value
         if not isinstance(itemNum, float):
             break
-        itemNum = int(itemNum)
+        itemNum = str(int(itemNum))
         print(itemNum)
 
-        if items.__contains__(itemNum):
+        if items.keys().__contains__(itemNum):
             item = items[itemNum]
             i = 0
             for header in headers:
@@ -97,7 +87,7 @@ for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared I
 
         iRow = iRow + 1
 
-pdb.set_trace()
-doc.save('worksheet 47.xlsx', pyoo.FILTER_EXCEL_2007)
+#pdb.set_trace()
+doc.save('worksheet.xlsx', pyoo.FILTER_EXCEL_2007)
 doc.close()
 subprocess.call("kill `ps|grep soffice.bin| awk '{print $1}'`", shell=True)
