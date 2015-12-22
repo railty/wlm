@@ -11,7 +11,7 @@ def loadData(filename):
         items = json.load(json_file)
     item = items[list(items.keys())[0]]
     headers = list(item.keys())
-
+    headers = ['WM', 'Current_Price', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
     return (headers, items)
 
 def rgb(r, g, b):
