@@ -11,7 +11,7 @@ def loadData(filename):
         items = json.load(json_file)
     item = items[list(items.keys())[0]]
     headers = list(item.keys())
-    headers = ['WM', 'Current_Price', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
+    headers = ['WM', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
     return (headers, items)
 
 def rgb(r, g, b):
@@ -57,7 +57,7 @@ for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared I
 
     rowHeader = 3
     colItemNum = 11
-    colExtra = 17
+    colExtra = 18
 
     i = 0
     for header in headers:
