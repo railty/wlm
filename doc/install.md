@@ -1,7 +1,9 @@
 #
-gem uninstall tiny-tds
+gem uninstall tiny_tds
 sudo apt-get install freetds-dev freetds-bin tdsodbc
-gem install tiny-tds
+or
+brew install freetds
+gem install tiny_tds
 
 # windows port forwarding
 ##display
