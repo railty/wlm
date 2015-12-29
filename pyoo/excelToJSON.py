@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 import sys
 import os.path
+import subprocess
 import time
 import pdb
 import json
 import pyoo
 
 def connect():
+    cmd = 'soffice --accept="socket,host=localhost,port=2002;urp;" --norestore --nologo --nodefault --headless'
+    soffice = subprocess.Popen(cmd, shell=True)
+
     while True:
         try:
             office = pyoo.Desktop('localhost', 2002)
@@ -51,3 +55,5 @@ if len(sys.argv) == 2:
 
         with open(setting['json'], 'w') as outfile:
             json.dump({'headers':headers, 'items':items}, outfile, sort_keys=True, indent=4)
+
+        subprocess.call("kill `ps|grep soffice.bin| awk '{print $1}'`", shell=True)

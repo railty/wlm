@@ -1,6 +1,9 @@
 class Item < ActiveRecord::Base
-  def self.importExcel(excelFile, job=nil)
-    job = Time.now.strftime("%Y-%m-%d-%H-%M-%S") if job == nil
+  def self.importExcel(excelTempfile, excelFileName)
+    job = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
+    ext = File.extname(excelFileName)
+    excelFile = "data/input/#{job}.#{ext}"
+    FileUtils::copy(excelTempfile, excelFile)
 
     setting = {}
     setting['excel'] = excelFile
@@ -23,6 +26,7 @@ class Item < ActiveRecord::Base
     items = JSON.parse(File.read(setting['json']))
     puts items['items'].length
 
+    self.loadData(job)
     return job
   end
 

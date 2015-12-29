@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+
+<ul class="nav nav-tabs">
+  <li class='<%=@classes[0]%>'><%=link_to 'All', items_path(:report=>'all')%></li>
+  <li class='<%=@classes[1]%>'><%=link_to 'Duplicated', items_path(:report=>'duplicated')%></li>
+  <li class='<%=@classes[2]%>'><%=link_to 'Missing', items_path(:report=>'missing')%></li>
+</ul>
+
 <h1>Items(<%=@count%>)</h1>
 
 <%= will_paginate @items, renderer: BootstrapPagination::Rails %>
@@ -28,3 +35,10 @@
     <% end %>
   </tbody>
 </table>
+
+<%= form_tag({action: :upload}, multipart: true) do %>
+  <%= file_field_tag 'excel' %>
+  <%= submit_tag("upload") %>
+<% end %>
+
+<%=link_to 'Delete All', items_path(:act=>'delete', :report=>session[:report]), :class=>"btn btn-danger", :role=>"button"%>

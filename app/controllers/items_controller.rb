@@ -4,8 +4,26 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @count = Item.all.length
-    @items = Item.paginate(:page => params[:page], :per_page => 100).order('id')
+    session[:report] = params['report'] || 'all'
+
+    @classes = ["inactive", "inactive", "inactive"]
+    if session[:report] == 'duplicated' then
+      @items = Item.where("upc in (?)", Item.select(:upc).group(:upc).having("count(*) > 1"))
+      @classes[1] = "active"
+    elsif session[:report] == 'missing' then
+      @items = Item.joins("left join products_stores on items.vendor_stk_nbr = products_stores.prod_num where products_stores.prod_num is null")
+      @classes[2] = "active"
+    else
+      @items = Item.all
+      @classes[0] = "active"
+    end
+
+    if params[:act] == 'delete' then
+      @items.delete_all
+    end
+
+    @items = @items.paginate(:page => params[:page], :per_page => 100).order('upc, id')
+    @count = @items.count
   end
 
   # GET /items/1
@@ -54,12 +72,25 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   # DELETE /items/1.json
-  def destroy
+  def destroy#
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upload
+    respond_to do |format|
+     if Item.importExcel(params['excel'].tempfile, params['excel'].original_filename)
+       format.html { redirect_to items_url, notice: 'excel was successfully imported.' }
+       format.json { head :no_content }
+     else
+       format.html { redirect_to items_url, notice: 'Error import file.' }
+       format.json { head :no_content }
+     end
+    end
+
   end
 
   private
