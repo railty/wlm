@@ -3,6 +3,7 @@ lock '3.4.0'
 
 set :application, 'wlm'
 set :repo_url, 'https://github.com/railty/wlm.git'
+set :rbenv_path, '/home/sning/.rbenv/'
 set :rbenv_ruby, '2.2.2'
 
 # Default branch is :master
