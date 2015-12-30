@@ -15,5 +15,9 @@
 /log/*
 !/log/.keep
 /tmp
-/data/*
+
+/data/**/*.json
+/data/**/*.xlsx
+/data/**/.~*
+
 /config/database.*

@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   def self.importExcel(excelTempfile, excelFileName)
     job = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
     ext = File.extname(excelFileName)
-    excelFile = "data/input/#{job}.#{ext}"
+    excelFile = "data/input/#{job}#{ext}"
     FileUtils::copy(excelTempfile, excelFile)
 
     setting = {}
