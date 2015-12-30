@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import sys
 import os.path
-import subprocess
 import time
 import pdb
 import json
