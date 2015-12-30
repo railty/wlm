@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import subprocess
 import signal
 import time
@@ -5,6 +6,7 @@ import pdb
 import pyoo
 import json
 import sys
+import lib
 
 def loadData(filename):
     with open(filename) as json_file:
@@ -31,23 +33,24 @@ def getColor(row):
         w = 0
     return red if g < w else green
 
+logger = lib.getLogger("price guide")
 weekExcel = sys.argv[1]
-headers, items = loadData('../data/output/wms.json')
-#print(items)
+headers, items = loadData('data/output/wms.json')
+logger.debug(items)
 
 cmd = 'soffice --accept="socket,host=localhost,port=2002;urp;" --norestore --nologo --nodefault' # --headless
 soffice = subprocess.Popen(cmd, shell=True)
-#print(soffice.pid)
+logger.info(soffice.pid)
 
 while True:
     try:
         desktop = pyoo.Desktop('localhost', 2002)
         break
     except:
-        print("Waiting ...")
+        logger.info("Waiting ...")
         time.sleep (250.0 / 1000.0)
 
-#print(desktop)
+logger.info(desktop)
 doc = desktop.open_spreadsheet(weekExcel)
 for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared Items - Require Review': 'Shared Worksheet'}.items():
     print(sheet + '-->' + worksheet)
@@ -70,7 +73,7 @@ for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared I
         if not isinstance(itemNum, float):
             break
         itemNum = str(int(itemNum))
-        print(itemNum)
+        logger.info(itemNum)
 
         if items.keys().__contains__(itemNum):
             item = items[itemNum]

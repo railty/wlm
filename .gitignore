@@ -16,6 +16,8 @@
 !/log/.keep
 /tmp
 
+pyoo/__pycache__
+
 /data/**/*.json
 /data/**/*.xlsx
 /data/**/.~*

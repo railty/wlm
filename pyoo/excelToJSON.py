@@ -7,26 +7,16 @@ import pdb
 import json
 import pyoo
 
-def connect():
-    cmd = 'soffice --accept="socket,host=localhost,port=2002;urp;" --norestore --nologo --nodefault --headless'
-    soffice = subprocess.Popen(cmd, shell=True)
+import lib
 
-    while True:
-        try:
-            office = pyoo.Desktop('localhost', 2002)
-            break
-        except:
-            print("Waiting ...")
-            time.sleep (250.0 / 1000.0)
-    return office
-
+logger = lib.getLogger("daily import")
 if len(sys.argv) == 2:
     json_setting = sys.argv[1]
     setting = json.loads(open(json_setting).read())
-    print(setting)
+    logger.info(setting)
 
     if os.path.isfile(setting['excel']):
-        office = connect()
+        office = lib.startOffice()
         doc = office.open_spreadsheet(setting['excel'])
         sheet = doc.sheets[setting['sheet']]
 
@@ -34,7 +24,7 @@ if len(sys.argv) == 2:
         for iCol in range(setting['colStart'], setting['colEnd']):
             headers.append(sheet[setting['rowHeader'], iCol].value)
 
-        print(headers)
+        logger.info(headers)
 
         iRow = setting['rowHeader'] + 1
         items = []
@@ -49,11 +39,11 @@ if len(sys.argv) == 2:
 
             items.append(item)
             if iRow % 100 == 0:
-                print("reading {0} rows".format(iRow))
+                logger.info("reading {0} rows".format(iRow))
             iRow = iRow + 1
         doc.close
 
         with open(setting['json'], 'w') as outfile:
             json.dump({'headers':headers, 'items':items}, outfile, sort_keys=True, indent=4)
 
-        subprocess.call("kill `ps|grep soffice.bin| awk '{print $1}'`", shell=True)
+        lib.closeOffice()

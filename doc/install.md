@@ -28,3 +28,8 @@ git branch -d jobs
 
 git pull origin jobs
 git push origin jobs
+
+sudo apt-get install python3-pip
+sudo pip3 install pyoo
+
+sudo apt-get install libreoffice-base-core libreoffice-calc openjdk-7-jdk

@@ -21,7 +21,9 @@ class Item < ActiveRecord::Base
       f.write(JSON.pretty_generate(setting))
     end
 
-    system("pyoo/excelToJSON.py data/jobs/#{job}.json")
+    cmd = "pyoo/excelToJSON.py data/jobs/#{job}.json"
+    Rails.logger.info cmd
+    system(cmd)
 
     items = JSON.parse(File.read(setting['json']))
     puts items['items'].length
