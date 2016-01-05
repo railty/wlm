@@ -6,13 +6,19 @@ class ItemsController < ApplicationController
   def index
     session[:report] = params['report'] || 'all'
 
-    @classes = ["inactive", "inactive", "inactive"]
-    if session[:report] == 'duplicated' then
+    @classes = ["inactive", "inactive", "inactive", "inactive", "inactive"]
+    if session[:report] == 'duplicated_upc' then
       @items = Item.where("upc in (?)", Item.select(:upc).group(:upc).having("count(*) > 1"))
       @classes[1] = "active"
+    elsif session[:report] == 'duplicated_prodnum' then
+      @items = Item.where("vendor_stk_nbr in (?)", Item.select(:vendor_stk_nbr).group(:vendor_stk_nbr).having("count(*) > 1"))
+      @classes[2] = "active"
     elsif session[:report] == 'missing' then
       @items = Item.joins("left join products_stores on items.vendor_stk_nbr = products_stores.prod_num where products_stores.prod_num is null")
-      @classes[2] = "active"
+      @classes[3] = "active"
+    elsif session[:report] == 'priceChanging' then
+      @items = Item.where("proposed_price is not null")
+      @classes[4] = "active"
     else
       @items = Item.all
       @classes[0] = "active"
@@ -90,7 +96,14 @@ class ItemsController < ApplicationController
        format.json { head :no_content }
      end
     end
+  end
 
+  def complete_price
+    Item.complete_price
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: 'Price was successfully changed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -101,6 +114,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params[:item]
+      params[:item].permit([:origin, :proposed_price])
     end
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       post 'upload'
+      post 'complete_price'
     end
   end
   root 'items#index'

@@ -3,8 +3,10 @@
 
 <ul class="nav nav-tabs">
   <li class='<%=@classes[0]%>'><%=link_to 'All', items_path(:report=>'all')%></li>
-  <li class='<%=@classes[1]%>'><%=link_to 'Duplicated', items_path(:report=>'duplicated')%></li>
-  <li class='<%=@classes[2]%>'><%=link_to 'Missing', items_path(:report=>'missing')%></li>
+  <li class='<%=@classes[1]%>'><%=link_to 'Duplicated UPC', items_path(:report=>'duplicated_upc')%></li>
+  <li class='<%=@classes[2]%>'><%=link_to 'Duplicated Stock Number', items_path(:report=>'duplicated_prodnum')%></li>
+  <li class='<%=@classes[3]%>'><%=link_to 'Missing', items_path(:report=>'missing')%></li>
+  <li class='<%=@classes[4]%>'><%=link_to 'Price Changing', items_path(:report=>'priceChanging')%></li>
 </ul>
 
 <h1>Items(<%=@count%>)</h1>
@@ -16,6 +18,8 @@
       <th>Item Number</th>
       <th>UPC</th>
       <th>Price</th>
+      <th>Proposed Price</th>
+      <th>Origin</th>
       <th>Measure</th>
       <th>Description</th>
       <th>ALP Prod Num</th>
@@ -27,7 +31,9 @@
       <tr>
         <td><%= item.id %></td>
         <td><%= item.upc %></td>
-        <td><%= number_to_currency(item.unit_retail) %></td>
+        <td><%= number_to_currency(item.unit_retail)%></td>
+        <td><%= link_to number_to_currency(item.proposed_price || 0), edit_item_path(item)%></td>
+        <td><%= link_to item.origin || 'Unknown', edit_item_path(item) %></td>
         <td><%= item.unit_size_uom %></td>
         <td><%= item.signing_desc %></td>
         <td><%= item.vendor_stk_nbr %></td>
@@ -41,4 +47,8 @@
   <%= submit_tag("upload") %>
 <% end %>
 
-<%=link_to 'Delete All', items_path(:act=>'delete', :report=>session[:report]), :class=>"btn btn-danger", :role=>"button"%>
+<%if session[:report]=='priceChanging' %>
+  <%=link_to 'Complete Price Change', complete_price_items_path, :method=>:post, :class=>"btn btn-danger", :role=>"button"%>
+<%else%>
+  <%=link_to 'Delete All', items_path(:act=>'delete', :report=>session[:report]), :class=>"btn btn-danger", :role=>"button"%>
+<%end%>

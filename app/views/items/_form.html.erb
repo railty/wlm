@@ -11,7 +11,32 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class='table table-striped table-condensed' style="width:600px">
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Country of Origin</td>
+      <td>
+        <%= f.select(:origin) do %>
+          <% Item.countrys.each do |c| -%>
+            <%= content_tag(:option, c[1], value: c[0], title: c[2]) %>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= f.submit %></td>
+    </tr>
+    <tr>
+      <td>Current Price</td>
+      <td><%= number_to_currency(@item.unit_retail) %></td>
+    </tr>
+    <tr>
+      <td>Proposed Price</td>
+      <td><%= f.text_field(:proposed_price) %></td>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+
 <% end %>

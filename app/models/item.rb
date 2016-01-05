@@ -1,4 +1,22 @@
 class Item < ActiveRecord::Base
+  def self.complete_price
+    self.where("proposed_price is not null").each do |item|
+      item.unit_retail = item.proposed_price
+      item.proposed_price = nil
+      item.save
+    end
+  end
+
+  def self.countrys
+    countries = []
+    query = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode"
+    results = ActiveRecord::Base.connection.exec_query(query)
+    results.each do |res|
+      countries << [res['COUNTRY_CODE'], res['COUNTRY_NAME'], res['OFFICIAL_NAME']]
+    end
+    return countries
+  end
+
   def self.importExcel(excelTempfile, excelFileName)
     job = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
     ext = File.extname(excelFileName)
@@ -66,6 +84,7 @@ class Item < ActiveRecord::Base
       ct = ct + 1
     end
     #puts items
+    debugger
     Item.create(items)
     puts "total items: #{Item.all.length}"
 
