@@ -19,7 +19,7 @@
 pyoo/__pycache__
 
 /data/**/*.json
-/data/**/*.xlsx
+/data/**/*.xls*
 /data/**/.~*
 
 /config/database.*

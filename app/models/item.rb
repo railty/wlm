@@ -27,9 +27,17 @@ class Item < ActiveRecord::Base
     excelFile = "data/input/#{job}#{ext}"
     FileUtils::copy(excelTempfile, excelFile)
 
-    setting = {}
-    setting['excel'] = excelFile
-    setting['job'] = job
+    setting = {'excel' => excelFile, 'job' => job}
+
+    if excelFileName =~ /^Daily Report / then
+      importDaily(setting)
+    elsif excelFileName =~ /^hwadiwa_/
+      import_wm_products(setting)
+    end
+  end
+
+  def self.importDaily(setting)
+    job = setting['job']
     setting['json'] = "data/output/#{job}.json"
     setting['sheet'] = 0
 
@@ -52,6 +60,21 @@ class Item < ActiveRecord::Base
 
     self.loadData(job)
     return job
+  end
+
+  def self.import_wm_products(setting)
+    excel = setting['excel']
+
+    require 'open3'
+    stdin, stdout, stderr, wait_thr = Open3.popen3('pyoo/excel2json.py', '--option=1', excel)
+    result = stdout.gets(nil)
+    stdout.close
+    stderr.gets(nil)
+    stderr.close
+    exit_code = wait_thr.value
+
+    data = JSON.parse(result)
+    debugger 
   end
 
   def self.loadData(job)
@@ -88,7 +111,7 @@ class Item < ActiveRecord::Base
       ct = ct + 1
     end
     #puts items
-    #debugger
+    debugger
     #Item.create(items)
     items.each do |item|
       it = Item.find_by(:id => item['id'])

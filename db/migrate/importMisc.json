@@ -1,0 +1,65 @@
+{
+  "Prime Item Nbr" : {
+    "table": "items",
+    "field": "id",
+    "description": "",
+    "datatype": "integer",
+    "options": ""
+  },
+  "Signing Desc" : {
+    "table": "items",
+    "field": "signing_desc",
+    "description": "",
+    "datatype": "string",
+    "options": ""
+  },
+  "Prime Item Desc" : {
+    "table": "items",
+    "field": "item_desc_1",
+    "description": "",
+    "datatype": "string",
+    "options": ""
+  },
+  "UPC" : {
+    "table": "items",
+    "field": "upc",
+    "description": "",
+    "datatype": "string",
+    "options": ""
+  },
+  "Unit Retail" : {
+    "table": "items",
+    "field": "unit_retail",
+    "description": "",
+    "datatype": "decimal",
+    "options": ":precision=>6, :scale=>2"
+  },
+  "Unit Retail" : {
+    "table": "items",
+    "field": "unit_retail",
+    "description": "",
+    "datatype": "decimal",
+    "options": ":precision=>6, :scale=>2"
+  },
+  "Unit Size UOM" : {
+    "table": "items",
+    "name": "unit_size_uom",
+    "description": "Unit Size UOM",
+    "datatype": "string",
+    "options": ""
+  },
+  "Fineline Number" : {
+    "table": "items",
+    "name": "fineline_number",
+    "description": "Fineline Number",
+    "datatype": "decimal",
+    "options": ""
+  },
+  "Fineline Description" : {
+    "table": "items",
+    "name": "fineline_description",
+    "description": "Fineline Description",
+    "datatype": "string",
+    "options": ""
+  }
+}
