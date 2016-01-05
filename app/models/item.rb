@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+  def print
+    Item.execute_procedure "Print_Product_Label", self.vendor_stk_nbr
+  end
+
   def self.complete_price
     self.where("proposed_price is not null").each do |item|
       item.unit_retail = item.proposed_price
@@ -9,8 +13,8 @@ class Item < ActiveRecord::Base
 
   def self.countrys
     countries = []
-    query = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode"
-    results = ActiveRecord::Base.connection.exec_query(query)
+    sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode"
+    results = ActiveRecord::Base.connection.select_all(sql)
     results.each do |res|
       countries << [res['COUNTRY_CODE'], res['COUNTRY_NAME'], res['OFFICIAL_NAME']]
     end
@@ -29,9 +33,9 @@ class Item < ActiveRecord::Base
     setting['json'] = "data/output/#{job}.json"
     setting['sheet'] = 0
 
-    setting['rowHeader'] = 17
+    setting['rowHeader'] = 18
     setting['colStart'] = 0
-    setting['colEnd'] = 17
+    setting['colEnd'] = 17  #the new vdpk_cost is not used, to use, change this to 18 and modify db/migration/items.json
     setting['rowStart'] = setting['rowHeader'] + 1
     setting['rowEnd'] = 'not isinstance(sheet[iRow, 0].value, float)'
 
@@ -51,7 +55,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.loadData(job)
-    Item.destroy_all
+    #Item.destroy_all
     attrs = JSON.parse(File.read("db/migrate/items.json"))
     map = {'Item Nbr' => 'id'}
     attrs.each do |attr|
@@ -84,8 +88,18 @@ class Item < ActiveRecord::Base
       ct = ct + 1
     end
     #puts items
-    debugger
-    Item.create(items)
+    #debugger
+    #Item.create(items)
+    items.each do |item|
+      it = Item.find_by(:id => item['id'])
+      if (it == nil) then
+        it = Item.create(item)
+      else
+        it.update(item)
+      end
+      it.save
+    end
+
     puts "total items: #{Item.all.length}"
 
     Department.destroy_all

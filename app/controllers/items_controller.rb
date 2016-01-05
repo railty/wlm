@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :print]
 
   # GET /items
   # GET /items.json
@@ -26,6 +26,11 @@ class ItemsController < ApplicationController
 
     if params[:act] == 'delete' then
       @items.delete_all
+    end
+
+    if params['search'] != nil then
+      search = "%#{params['search']}%"
+      @items = @items.where("vendor_stk_nbr like ? or upc like ? or convert(char(8), id) like ?", search, search, search)
     end
 
     @items = @items.paginate(:page => params[:page], :per_page => 100).order('upc, id')
@@ -102,6 +107,14 @@ class ItemsController < ApplicationController
     Item.complete_price
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Price was successfully changed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def print
+    @item.print
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: "#{@item.id} was send to print pool successfully." }
       format.json { head :no_content }
     end
   end

@@ -23,6 +23,7 @@
       <th>Measure</th>
       <th>Description</th>
       <th>ALP Prod Num</th>
+      <th>Action</th>      
     </tr>
   </thead>
 
@@ -37,6 +38,7 @@
         <td><%= item.unit_size_uom %></td>
         <td><%= item.signing_desc %></td>
         <td><%= item.vendor_stk_nbr %></td>
+        <td><%= link_to "Print",  print_item_path(item) %></td>
       </tr>
     <% end %>
   </tbody>

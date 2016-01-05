@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :items do
+    member do
+      get "print"
+    end
     collection do
       post 'upload'
       post 'complete_price'
