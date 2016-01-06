@@ -1,0 +1,104 @@
+{
+  "Acct Dept Nbr" : {
+    "table": "items",
+    "field": "department_id",
+    "datatype": "integer",
+    "options": ""
+  },
+  "UPC" : {
+    "table": "items",
+    "field": "upc",
+    "datatype": "string",
+    "options": ":limit => 13"
+  },
+  "VNPK UPC" : {
+    "table": "items",
+    "field": "vnpk_upc",
+    "datatype": "string",
+    "options": ":limit => 13"
+  },
+  "Unit Retail" : {
+    "table": "items",
+    "field": "unit_retail",
+    "datatype": "decimal",
+    "options": ":precision=>6, :scale=>2"
+  },
+  "Unit Cost" : {
+    "table": "items",
+    "field": "unit_cost",
+    "datatype": "decimal",
+    "options": ":precision=>6, :scale=>2"
+  },
+  "Unit Size" : {
+    "table": "items",
+    "field": "unit_size",
+    "datatype": "decimal",
+    "options": ""
+  },
+  "Unit Size UOM" : {
+    "table": "items",
+    "field": "unit_size_uom",
+    "datatype": "string",
+    "options": ""
+  },
+  "Signing Desc" : {
+    "table": "items",
+    "field": "signing_desc",
+    "datatype": "string",
+    "options": ""
+  },
+  "VNPK Qty" : {
+    "table": "items",
+    "field": "vnpk_qty",
+    "datatype": "decimal",
+    "options": ""
+  },
+  "Item Nbr" : {
+    "table": "items",
+    "field": "id",
+    "datatype": "integer",
+    "options": ""
+  },
+  "Item Flags" : {
+    "table": "items",
+    "field": "item_flags",
+    "datatype": "string",
+    "options": ""
+  },
+  "Item Desc 1" : {
+    "table": "items",
+    "field": "item_desc_1",
+    "datatype": "string",
+    "options": ""
+  },
+  "Vendor Stk Nbr" : {
+    "table": "items",
+    "field": "vendor_stk_nbr",
+    "datatype": "string",
+    "options": ""
+  },
+  "Size Desc" : {
+    "table": "items",
+    "field": "size_desc",
+    "datatype": "string",
+    "options": ""
+  },
+  "Fineline Number" : {
+    "table": "items",
+    "field": "fineline_number",
+    "datatype": "decimal",
+    "options": ""
+  },
+  "Fineline Description" : {
+    "table": "items",
+    "field": "fineline_description",
+    "datatype": "string",
+    "options": ""
+  },
+  "VNPK Cost" : {
+    "table": "items",
+    "field": "vnpk_cost",
+    "datatype": "decimal",
+    "options": ":precision=>6, :scale=>2"
+  }
+}

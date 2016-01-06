@@ -34,13 +34,6 @@
     "datatype": "decimal",
     "options": ":precision=>6, :scale=>2"
   },
-  "Unit Retail" : {
-    "table": "items",
-    "field": "unit_retail",
-    "description": "",
-    "datatype": "decimal",
-    "options": ":precision=>6, :scale=>2"
-  },
   "Unit Size UOM" : {
     "table": "items",
     "field": "unit_size_uom",
