@@ -16,5 +16,5 @@ args = parser.parse_args()
 option = args.option
 excelFileName = args.excel_filename
 
-excel = lib.Excel(excelFileName, option)
-excel.dump()
+excel = lib.Excel()
+excel.dump(excelFileName, option)

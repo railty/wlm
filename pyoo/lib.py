@@ -3,6 +3,7 @@ import os.path
 import subprocess
 import time
 import pyoo
+import pytds
 import json
 import pdb
 
@@ -26,14 +27,12 @@ def getLogger(app, withStdout=True):
     return logger
 
 class Excel:
-    def __init__(self, fileName, option):
-        self.fileName = fileName
-        self.option = option
-        self.logger = getLogger("excel to json", False)
-        self.logger.info("option = {}, excel = {}".format(self.option, self.fileName))
+    def __init__(self, logger=None):
+        if logger is None:
+            logger = getLogger("excel", False)
+        self.logger = logger
 
     def startOffice(self, quite=True):
-
         cmd = 'soffice --accept="socket,host=localhost,port=2002;urp;" --norestore --nologo --nodefault'
         if quite:
             cmd = cmd + ' --headless'
@@ -58,24 +57,25 @@ class Excel:
         #print(cmd)
         subprocess.call(cmd, shell=True)
 
-    def dump(self):
-        if os.path.isfile(self.fileName):
+    def dump(self, fileName, option):
+        if os.path.isfile(fileName):
+            self.logger.info("option = {}, excel = {}".format(option, fileName))
             office = self.startOffice()
             data = {}
             try:
-                doc = office.open_spreadsheet(self.fileName)
+                doc = office.open_spreadsheet(fileName)
                 sheetNames = []
                 for sheet in doc.sheets:
                     sheetNames.append(sheet.name)
                 data["sheetNames"] = sheetNames
 
-                if (self.option == 1):
+                if (option == 1):
                     sheet = doc.sheets[0]
                     maxRow, maxColumn = sheet.getRange()
                     self.logger.info("sheet '{}' : maxRow = {}, maxColumn = {}".format(sheet.name, maxRow, maxColumn))
                     data["sheet"] = sheet.dump(maxRow, maxColumn)
 
-                elif (self.option == 2):
+                elif (option == 2):
                     data["sheets"] = []
                     for sheet in doc.sheets:
                         maxRow, maxColumn = sheet.getRange()
@@ -117,3 +117,13 @@ def hideColumn(self, col):
 def hideColumns(self, cols):
     for col in cols:
         self.hideColumn(col)
+
+def rgb(r, g, b):
+    return 256*(256*r+g)+b
+
+def getProductInfo(id):
+    with pytds.connect('192.168.86.1', 'pris', 'po', 'prispo') as conn:
+        with conn.cursor() as cur:
+            cur.execute("select top 1 id, Store, Prod_Name, Prod_Alias, RegPrice, OnSalePrice from items join products_stores on items.vendor_stk_nbr = products_stores.prod_num where items.id='{}'".format(id))
+            res = cur.fetchone()
+            return res

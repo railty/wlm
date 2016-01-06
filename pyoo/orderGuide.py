@@ -1,86 +1,68 @@
 #!/usr/bin/python3
-import subprocess
-import signal
+import sys
 import time
+import datetime
 import pdb
 import pyoo
-import json
-import sys
-import os
+import argparse
 import lib
 
-def loadData(filename):
-    with open(filename) as json_file:
-        items = json.load(json_file)
-    item = items[list(items.keys())[0]]
-    headers = list(item.keys())
-    headers = ['WM', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
-    return (headers, items)
+parser = argparse.ArgumentParser(description='order guide process.')
+parser.add_argument('excel_filename', help='input excel filename')
+args = parser.parse_args()
+fileName = args.excel_filename
 
-def rgb(r, g, b):
-    return 256*(256*r+g)+b
+logger = lib.getLogger("excel", False)
+excel = lib.Excel(logger)
+office = excel.startOffice()
+data = {}
+try:
+    doc = office.open_spreadsheet(fileName)
 
-def getColor(row):
-    red = rgb(255, 0, 0)
-    green = rgb(0, 255, 0)
-    try:
-        g = float(row[6].value)
-    except:
-        g = 0
+    for sheet, worksheet in {'1080 Order Guide': 'Worksheet'}.items():
+        print(sheet + '-->' + worksheet)
+        doc.sheets.copy(sheet, worksheet, len(doc.sheets))
 
-    try:
-        w = float(row[22].value)
-    except:
-        w = 0
-    return red if g < w else green
+        sheet = doc.sheets[worksheet]
+        sheet.hideColumns(['A', 'B', 'C', 'D', 'E', 'F', 'K', 'L', 'M'])
 
-logger = lib.getLogger("order guide")
-headers, items = loadData('data/output/wms.json')
-logger.debug("total items: %d".format(len(items.keys())))
-if len(sys.argv) == 2:
-    json_setting = sys.argv[1]
-    setting = json.loads(open(json_setting).read())
-    logger.info(setting)
+        rowHeader = 0
+        colItemNum = 6
+        colChinese = 10
+        colDates = 13
+        colFill = 17
 
-    if os.path.isfile(setting['excel']):
-        office = lib.startOffice()
-        doc = office.open_spreadsheet(setting['excel'])
+        for i in range(7):
+            sheet[0, colFill+i].value = datetime.date(2016, 1, 3 + i).strftime("%a")
 
-        for sheet, worksheet in {'1080 Order Guide': 'Worksheet'}.items():
-            print(sheet + '-->' + worksheet)
-            doc.sheets.copy(sheet, worksheet, len(doc.sheets))
+        iRow = rowHeader + 1
+        while True:
+            itemNum = sheet[iRow, colItemNum].value
+            if not isinstance(itemNum, float):
+                break
+            itemNum = int(itemNum)
+            logger.info(itemNum)
 
-            sheet = doc.sheets[worksheet]
-            sheet.hideColumns(['A', 'B', 'C', 'D', 'E', 'F', 'K', 'L', 'M'])
+            #info = getProductInfo(itemNum)
+            #if info is not None:
+            #    print(info)
+            #    #sheet[iRow, colFill].value = item['Prod_Alias']
 
-            rowHeader = 0
-            colItemNum = 6
-            colFill = 10
+            dates = sheet[iRow, colDates].value
+            if dates == 'Order as needed as SSTK':
+                dates = 'S,M,T,W,TH,F,S'
 
-            iRow = rowHeader + 1    #normally this is +1, this spreadsheet has an extra blank row
-            while True:
-                itemNum = sheet[iRow, colItemNum].value
-                if not isinstance(itemNum, float):
-                    break
-                itemNum = str(int(itemNum))
-                logger.info(itemNum)
-                pdb.set_trace()
-                if items.keys().__contains__(itemNum):
-                    print("1111")
+            dates = dates.split(',')
+            for i in range(7):
+                if dates[i] == '_':
+                    sheet[iRow, colFill+i].background_color = lib.rgb(0, 0, 0)
 
-                    item = items[itemNum]
-                    sheet[iRow, colFill].value = item['Prod_Alias']
+            iRow = iRow + 1
 
-
-                iRow = iRow + 1
-
-#N
-#Every day as SSTK
-#S,M,T,W,TH,F,S
-#_,_,_,_,_,F,_
-
-
-
-doc.save('data/output/order_guide_worksheet.xlsx', pyoo.FILTER_EXCEL_2007)
-doc.close()
-lib.closeOffice()
+    #pdb.set_trace()
+    doc.save('data/output/order_guide_worksheet.xlsx', pyoo.FILTER_EXCEL_2007)
+    doc.close
+except Exception as e:
+    logger.info("Error: {}".format(e))
+finally:
+    excel.closeOffice()
