@@ -10,5 +10,6 @@ class AddOriginToItems < ActiveRecord::Migration
     add_column :items, :notes, :string
     add_column :items, :vnpk_cost, :decimal, :precision=>6, :scale=>2
     add_column :items, :owner, :string
+    add_column :items, :grade, :string
   end
 end

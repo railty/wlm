@@ -95,9 +95,9 @@ class Excel:
 
 def dumpSheet(self, maxRow, maxColumn):
     table = []
-    for r in range(maxRow):
+    for r in range(maxRow + 1):
         row = []
-        for c in range(maxColumn):
+        for c in range(maxColumn + 1):
             row.append(self[r, c].value)
         table.append(row)
     return table

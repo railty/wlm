@@ -43,21 +43,21 @@
   },
   "Unit Size UOM" : {
     "table": "items",
-    "name": "unit_size_uom",
+    "field": "unit_size_uom",
     "description": "Unit Size UOM",
     "datatype": "string",
     "options": ""
   },
   "Fineline Number" : {
     "table": "items",
-    "name": "fineline_number",
+    "field": "fineline_number",
     "description": "Fineline Number",
-    "datatype": "decimal",
+    "datatype": "integer",
     "options": ""
   },
   "Fineline Description" : {
     "table": "items",
-    "name": "fineline_description",
+    "field": "fineline_description",
     "description": "Fineline Description",
     "datatype": "string",
     "options": ""

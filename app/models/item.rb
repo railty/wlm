@@ -32,6 +32,7 @@ class Item < ActiveRecord::Base
     if excelFileName =~ /^Daily Report / then
       importDaily(setting)
     elsif excelFileName =~ /^hwadiwa_/
+      setting['mapping'] = "db/migrate/import_wm_products.json"
       import_wm_products(setting)
     end
   end
@@ -74,7 +75,62 @@ class Item < ActiveRecord::Base
     exit_code = wait_thr.value
 
     data = JSON.parse(result)
-    debugger 
+
+    mapping = JSON.parse(File.read(setting['mapping']))
+    items = translate(data, mapping)
+    items.each do |item|
+      item['department_id'] = 94
+    end
+    create_or_update_items(items)
+  end
+
+  def self.create_or_update_items(items)
+    items.each do |item|
+      it = Item.find_by(:id => item['id'])
+      if (it == nil) then
+        it = Item.create(item)
+      else
+        it.update(item)
+      end
+      it.save
+    end
+  end
+
+  def self.translate(data, mapping)
+    header = mapping.keys
+    puts header.length
+    table = data['sheet']
+    iHeader = 0
+    rowHeader = nil
+    (0 .. table.length).each do |i|
+      row = table[i]
+      match = row & header
+      if match.length == header.length then
+        iHeader = i
+        rowHeader = row
+        break
+      end
+    end
+    items = []
+    if rowHeader != nil then
+      puts table.length
+      (iHeader+1 .. table.length-1).each do |i|
+        row = table[i]
+        item = {}
+        (0 .. row.length-1).each do |c|
+          cell = row[c]
+          if mapping[rowHeader[c]] != nil then
+            cell = cell.to_i if mapping[rowHeader[c]]['datatype'] == 'integer'
+            cell = cell.to_f if mapping[rowHeader[c]]['datatype'] == 'decimal'
+            item[mapping[rowHeader[c]]['field']] = cell
+          else
+            puts "skip #{rowHeader[c]}"
+          end
+        end
+        items << item
+      end
+    end
+    return items
   end
 
   def self.loadData(job)
@@ -111,7 +167,7 @@ class Item < ActiveRecord::Base
       ct = ct + 1
     end
     #puts items
-    debugger
+    #debugger
     #Item.create(items)
     items.each do |item|
       it = Item.find_by(:id => item['id'])
