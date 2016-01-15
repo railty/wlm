@@ -15,18 +15,20 @@
     <tr>
       <th>Attribute</th>
       <th>Value</th>
-      <th></th>
     </tr>
     <tr>
       <td>Country of Origin</td>
       <td>
-        <%= f.select(:origin) do %>
+        <%= f.select(:origin, :selected => 'CA') do %>
           <% Item.countrys.each do |c| -%>
-            <%= content_tag(:option, c[1], value: c[0], title: c[2]) %>
+            <% if c[0]==@item.origin then %>
+              <%= content_tag(:option, c[1], value: c[0], title: c[2], selected: 'selected') %>
+            <% else %>
+              <%= content_tag(:option, c[1], value: c[0], title: c[2]) %>
+            <% end %>
           <% end %>
         <% end %>
       </td>
-      <td><%= f.submit %></td>
     </tr>
     <tr>
       <td>Current Price</td>
@@ -35,8 +37,9 @@
     <tr>
       <td>Proposed Price</td>
       <td><%= f.text_field(:proposed_price) %></td>
-      <td><%= f.submit %></td>
     </tr>
   </table>
+
+  <%= f.submit %>
 
 <% end %>
