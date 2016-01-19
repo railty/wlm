@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    @admin = params['admin']=='true' || false
+
     session[:report] = params['report'] || 'all'
 
     @classes = ["inactive", "inactive", "inactive", "inactive", "inactive"]

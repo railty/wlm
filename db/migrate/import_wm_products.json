@@ -29,7 +29,7 @@
   },
   "Unit Retail" : {
     "table": "items",
-    "field": "unit_retail",
+    "field": "price_ceiling",
     "description": "",
     "datatype": "decimal",
     "options": ":precision=>6, :scale=>2"

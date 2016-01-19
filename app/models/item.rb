@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   def print
-    Item.execute_procedure "Print_Product_Label", self.vendor_stk_nbr
+    Item.execute_procedure "Print_Product_Label", self.upc
   end
 
   def self.complete_price

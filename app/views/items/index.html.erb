@@ -17,13 +17,14 @@
     <tr>
       <th>Item Number</th>
       <th>UPC</th>
+      <th>Price Ceiling</th>
       <th>Price</th>
       <th>Proposed Price</th>
       <th>Origin</th>
       <th>Measure</th>
       <th>Description</th>
       <th>ALP Prod Num</th>
-      <th>Action</th>      
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -32,6 +33,7 @@
       <tr>
         <td><%= item.id %></td>
         <td><%= item.upc %></td>
+        <td><%= number_to_currency(item.price_ceiling)%></td>
         <td><%= number_to_currency(item.unit_retail)%></td>
         <td><%= link_to number_to_currency(item.proposed_price || 0), edit_item_path(item)%></td>
         <td><%= link_to item.origin || 'Unknown', edit_item_path(item) %></td>
@@ -44,7 +46,7 @@
   </tbody>
 </table>
 
-<%if 1==0 then %>
+<%if @admin then %>
 <%= form_tag({action: :upload}, multipart: true) do %>
   <%= file_field_tag 'excel' %>
   <%= submit_tag("upload") %>
