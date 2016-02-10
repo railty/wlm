@@ -1,104 +1,140 @@
 {
   "Acct Dept Nbr" : {
-    "table": "items",
-    "field": "department_id",
+    "table": "wm_items",
+    "field": "Acct_Dept_Nbr",
     "datatype": "integer",
     "options": ""
   },
+  "Dept Desc" : {
+    "table": "wm_items",
+    "field": "Dept_Desc",
+    "datatype": "string",
+    "options": ""
+  },
   "UPC" : {
-    "table": "items",
-    "field": "upc",
+    "table": "wm_items",
+    "field": "UPC",
     "datatype": "string",
     "options": ":limit => 13"
   },
   "VNPK UPC" : {
-    "table": "items",
-    "field": "vnpk_upc",
+    "table": "wm_items",
+    "field": "VNPK_UPC",
     "datatype": "string",
     "options": ":limit => 13"
   },
   "Unit Retail" : {
-    "table": "items",
-    "field": "price_ceiling",
+    "table": "wm_items",
+    "field": "Unit_Retail",
     "datatype": "decimal",
     "options": ":precision=>6, :scale=>2"
   },
   "Unit Cost" : {
-    "table": "items",
-    "field": "unit_cost",
+    "table": "wm_items",
+    "field": "Unit_Cost",
     "datatype": "decimal",
     "options": ":precision=>6, :scale=>2"
   },
   "Unit Size" : {
-    "table": "items",
-    "field": "unit_size",
+    "table": "wm_items",
+    "field": "Unit_Size",
     "datatype": "decimal",
     "options": ""
   },
   "Unit Size UOM" : {
-    "table": "items",
-    "field": "unit_size_uom",
+    "table": "wm_items",
+    "field": "Unit_Size_UOM",
     "datatype": "string",
     "options": ""
   },
   "Signing Desc" : {
-    "table": "items",
-    "field": "signing_desc",
+    "table": "wm_items",
+    "field": "Signing_Desc",
     "datatype": "string",
     "options": ""
   },
   "VNPK Qty" : {
-    "table": "items",
-    "field": "vnpk_qty",
+    "table": "wm_items",
+    "field": "VNPK_Qty",
     "datatype": "decimal",
     "options": ""
   },
   "Item Nbr" : {
-    "table": "items",
+    "table": "wm_items",
     "field": "id",
-    "datatype": "integer",
+    "datatype": "Item_Nbr",
     "options": ""
   },
   "Item Flags" : {
-    "table": "items",
-    "field": "item_flags",
+    "table": "wm_items",
+    "field": "Item_Flags",
     "datatype": "string",
     "options": ""
   },
   "Item Desc 1" : {
-    "table": "items",
-    "field": "item_desc_1",
+    "table": "wm_items",
+    "field": "Item_Desc_1",
     "datatype": "string",
     "options": ""
   },
   "Vendor Stk Nbr" : {
-    "table": "items",
-    "field": "vendor_stk_nbr",
+    "table": "wm_items",
+    "field": "Vendor_Stk_Nbr",
     "datatype": "string",
     "options": ""
   },
   "Size Desc" : {
-    "table": "items",
-    "field": "size_desc",
+    "table": "wm_items",
+    "field": "Size_Desc",
     "datatype": "string",
     "options": ""
   },
   "Fineline Number" : {
-    "table": "items",
-    "field": "fineline_number",
+    "table": "wm_items",
+    "field": "Fineline_Number",
     "datatype": "decimal",
     "options": ""
   },
   "Fineline Description" : {
-    "table": "items",
-    "field": "fineline_description",
+    "table": "wm_items",
+    "field": "Fineline_Description",
     "datatype": "string",
     "options": ""
   },
   "VNPK Cost" : {
-    "table": "items",
-    "field": "vnpk_cost",
+    "table": "wm_items",
+    "field": "VNPK_Cost",
     "datatype": "decimal",
     "options": ":precision=>6, :scale=>2"
+  },
+  "Fineline Description" : {
+    "table": "wm_items",
+    "field": "Fineline_Description",
+    "datatype": "string",
+    "options": ""
+  },
+  "Item Status" : {
+    "table": "wm_items",
+    "field": "Item_Status",
+    "datatype": "string",
+    "options": ""
+  },
+  "Item Type" : {
+    "table": "wm_items",
+    "field": "Item_Type",
+    "datatype": "string",
+    "options": ""
+  },
+  "Effective Date" : {
+    "table": "wm_items",
+    "field": "Effective_Date",
+    "datatype": "date",
+    "options": ""
+  },
+  "Create Date" : {
+    "table": "wm_items",
+    "field": "Create_Date",
+    "datatype": "date",
+    "options": ""
   }
 }

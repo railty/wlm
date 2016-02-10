@@ -93,18 +93,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def upload
-    respond_to do |format|
-     if Item.importExcel(params['excel'].tempfile, params['excel'].original_filename)
-       format.html { redirect_to items_url, notice: 'excel was successfully imported.' }
-       format.json { head :no_content }
-     else
-       format.html { redirect_to items_url, notice: 'Error import file.' }
-       format.json { head :no_content }
-     end
-    end
-  end
-
   def complete_price
     Item.complete_price
     respond_to do |format|

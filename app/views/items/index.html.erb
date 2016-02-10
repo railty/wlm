@@ -56,13 +56,6 @@
   </tbody>
 </table>
 
-<%if user_signed_in? and current_user.role == 'admin' then %>
-<%= form_tag({action: :upload}, multipart: true) do %>
-  <%= file_field_tag 'excel' %>
-  <%= submit_tag("upload") %>
-<% end %>
-<% end %>
-
 <%if session[:report]=='priceChanging' %>
   <%=link_to 'Complete Price Change', complete_price_items_path, :method=>:post, :class=>"btn btn-danger", :role=>"button"%>
 <%else%>

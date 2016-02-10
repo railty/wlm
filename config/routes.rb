@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  resources :jobs do
+    collection do
+      post 'upload_items'
+    end
+  end
+
   devise_for :users
   resources :items do
     member do
       get "print"
     end
     collection do
-      post 'upload'
       post 'complete_price'
     end
   end
