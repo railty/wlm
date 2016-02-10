@@ -58,8 +58,4 @@
 
 <%if session[:report]=='priceChanging' %>
   <%=link_to 'Complete Price Change', complete_price_items_path, :method=>:post, :class=>"btn btn-danger", :role=>"button"%>
-<%else%>
-  <%if 1==0 then %>
-    <%=link_to 'Delete All', items_path(:act=>'delete', :report=>session[:report]), :class=>"btn btn-danger", :role=>"button"%>
-  <%end%>
 <%end%>

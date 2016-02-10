@@ -124,6 +124,6 @@ def rgb(r, g, b):
 def getProductInfo(id):
     with pytds.connect('192.168.86.1', 'pris', 'po', 'prispo') as conn:
         with conn.cursor() as cur:
-            cur.execute("select top 1 id, Store, Prod_Name, Prod_Alias, RegPrice, OnSalePrice from items join products_stores on items.vendor_stk_nbr = products_stores.prod_num where items.id='{}'".format(id))
+            cur.execute("select top 1 Item_Nbr, Store, Prod_Name, Prod_Alias, RegPrice, OnSalePrice from wm_items join products_stores on wm_items.Vendor_Stk_Nbr = products_stores.prod_num where wm_items.Item_Nbr='{}'".format(id))
             res = cur.fetchone()
             return res

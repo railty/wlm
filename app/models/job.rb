@@ -1,4 +1,39 @@
 class Job < ActiveRecord::Base
+  before_destroy :destroy_files
+
+  def run
+    self.state = 'processing'
+    self.start = Time.now
+    self.save
+    if self.job_type == 'priceGuide' then
+      require 'open3'
+      cmd = "pyoo/priceGuide.py #{self.input} #{self.output}"
+      logger.info cmd
+      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+        self.stdout = stdout.read
+        self.stderr = stderr.read
+      end
+    end
+    self.finish = Time.now
+    self.state = 'completed'
+    self.save
+  end
+
+  def self.priceGuide(excelTempfile, excelFileName)
+    tm = Time.now.strftime("%Y-%m-%d-%H-%M")
+    ext = File.extname(excelFileName)
+
+    job = self.new
+    job.input = "data/input/#{tm}#{ext}"
+    job.output = "data/output/#{tm}.xlsx"
+    FileUtils::copy(excelTempfile, job.input)
+    job.name = "Price Guide #{tm}"
+    job.job_type = 'priceGuide'
+    job.state = 'waiting'
+    job.save
+    job.run
+  end
+
   def self.importWmItems(excelTempfile, excelFileName)
     job = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
     ext = File.extname(excelFileName)
@@ -19,6 +54,7 @@ class Job < ActiveRecord::Base
 
       items.each do |item|
         item['Acct_Dept_Nbr'] = 94
+        item['Dept_Desc'] = 'PRODUCE'
         item['Source'] = 'WM'
       end
     end
@@ -84,6 +120,16 @@ class Job < ActiveRecord::Base
       end
     end
     return items
+  end
+
+  def self.delete_wm_items
+    WmItem.destroy_all
+  end
+
+  private
+  def destroy_files
+    File.delete(self.input) if File.exist?(self.input)
+    File.delete(self.output) if File.exist?(self.output)
   end
 
 end

@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :jobs do
     collection do
       post 'upload_items'
+      post 'price_guide'
+      get 'delete_wm_items'
+    end
+    member do
+      get 'download'
     end
   end
 

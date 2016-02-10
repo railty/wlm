@@ -21,11 +21,11 @@ def getColor(row):
         w = 0
     return red if g < w else green
 
-
-parser = argparse.ArgumentParser(description='order guide process.')
-parser.add_argument('excel_filename', help='input excel filename')
+parser = argparse.ArgumentParser(description='price guide process.')
+parser.add_argument('input_excel_filename', help='input excel filename')
+parser.add_argument('output_excel_filename', help='output excel filename')
 args = parser.parse_args()
-fileName = args.excel_filename
+fileName = args.input_excel_filename
 
 headers = ['WM', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
 logger = lib.getLogger("excel", False)
@@ -34,7 +34,6 @@ office = excel.startOffice()
 
 try:
     doc = office.open_spreadsheet(fileName)
-
 
     for sheet, worksheet in {'Al Premium Specific Items': 'ALP Worksheet', 'Shared Items - Require Review': 'Shared Worksheet'}.items():
         print(sheet + '-->' + worksheet)
@@ -72,7 +71,7 @@ try:
             iRow = iRow + 1
 
     #pdb.set_trace()
-    doc.save('data/output/price_guide_worksheet.xlsx', pyoo.FILTER_EXCEL_2007)
+    doc.save(args.output_excel_filename, pyoo.FILTER_EXCEL_2007)
     doc.close
 except Exception as e:
     logger.info("Error: {}".format(e))

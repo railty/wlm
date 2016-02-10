@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :download]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -63,13 +62,47 @@ class JobsController < ApplicationController
 
   def upload_items
     respond_to do |format|
-     if Job.importWmItems(params['excel'].tempfile, params['excel'].original_filename)
+     if Job.importWmItems(params['excel'].tempfile, params['excel'].original_filename) then
        format.html { redirect_to jobs_url, notice: 'excel was successfully imported.' }
        format.json { head :no_content }
      else
        format.html { redirect_to jobs_url, notice: 'Error import file.' }
        format.json { head :no_content }
      end
+    end
+  end
+
+  def price_guide
+    respond_to do |format|
+     if Job.priceGuide(params['excel'].tempfile, params['excel'].original_filename) then
+       format.html { redirect_to jobs_url, notice: 'excel was successfully imported.' }
+       format.json { head :no_content }
+     else
+       format.html { redirect_to jobs_url, notice: 'Error import file.' }
+       format.json { head :no_content }
+     end
+    end
+  end
+
+  def delete_wm_items
+    respond_to do |format|
+     if Job.delete_wm_items() then
+       format.html { redirect_to jobs_url, notice: 'all wm_items were successfully deleted.' }
+       format.json { head :no_content }
+     else
+       format.html { redirect_to jobs_url, notice: 'Error delete wm_items.' }
+       format.json { head :no_content }
+     end
+    end
+  end
+
+  def download
+    if params[:file] == "output" then
+      respond_to do |format|
+        format.xlsx do
+          send_data File.read(@job.output), type: "application/xlsx", filename: Pathname.new(@job.output).basename.to_s, disposition: 'inline'
+        end
+      end
     end
   end
 

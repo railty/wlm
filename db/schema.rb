@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105010435) do
+ActiveRecord::Schema.define(version: 20160210150533) do
 
   create_table "AP", primary_key: "ProdNum", force: :cascade do |t|
     t.string "Name",    limit: 50
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20160105010435) do
     t.string "Category_ID",      limit: 2
     t.string "Category",         limit: 50
     t.string "Category_Chinese", limit: 50
+  end
+
+  create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
+    t.varchar "COUNTRY_NAME",  limit: 32
+    t.varchar "OFFICIAL_NAME", limit: 64
   end
 
   create_table "Dlt_ProdNum", id: false, force: :cascade do |t|
@@ -653,6 +658,14 @@ ActiveRecord::Schema.define(version: 20160105010435) do
     t.char     "CheckDigit",          limit: 1
   end
 
+  create_table "Products_Stores", primary_key: "Prod_Num", force: :cascade do |t|
+    t.varchar "Store",       limit: 10
+    t.varchar "Prod_Name",   limit: 50
+    t.string  "Prod_Alias",  limit: 40
+    t.money   "RegPrice",               precision: 19, scale: 4
+    t.money   "OnSalePrice",            precision: 19, scale: 4
+  end
+
   create_table "RFgen_ConnCheck", id: false, force: :cascade do |t|
     t.integer "pid", limit: 4
   end
@@ -786,6 +799,22 @@ ActiveRecord::Schema.define(version: 20160105010435) do
     t.float   "Receiving_Units",            null: false
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,          default: 0, null: false
+    t.integer  "attempts",   limit: 4,          default: 0, null: false
+    t.text     "handler",    limit: 2147483647,             null: false
+    t.text     "last_error", limit: 2147483647
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 4000
+    t.string   "queue",      limit: 4000
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
   create_table "departments", force: :cascade do |t|
     t.string   "name",       limit: 32
     t.datetime "created_at",            null: false
@@ -872,6 +901,20 @@ ActiveRecord::Schema.define(version: 20160105010435) do
     t.decimal  "vnpk_cost",                           precision: 6,  scale: 2
     t.string   "owner",                  limit: 4000
     t.string   "grade",                  limit: 4000
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "name",       limit: 4000
+    t.string   "job_type",   limit: 4000
+    t.string   "input",      limit: 4000
+    t.string   "output",     limit: 4000
+    t.string   "state",      limit: 4000
+    t.string   "stdout",     limit: 4000
+    t.string   "stderr",     limit: 4000
+    t.datetime "start"
+    t.datetime "finish"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -1008,6 +1051,50 @@ ActiveRecord::Schema.define(version: 20160105010435) do
     t.integer  "active",     limit: 1,   default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 4000, default: "", null: false
+    t.string   "encrypted_password",     limit: 4000, default: "", null: false
+    t.string   "reset_password_token",   limit: 4000
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,    default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 4000
+    t.string   "last_sign_in_ip",        limit: 4000
+    t.string   "role",                   limit: 4000
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wm_items", primary_key: "Item_Nbr", force: :cascade do |t|
+    t.integer "Acct_Dept_Nbr",        limit: 4
+    t.string  "Dept_Desc",            limit: 4000
+    t.string  "UPC",                  limit: 13
+    t.string  "VNPK_UPC",             limit: 13
+    t.decimal "Unit_Retail",                       precision: 6,  scale: 2
+    t.decimal "Unit_Cost",                         precision: 6,  scale: 2
+    t.decimal "Unit_Size",                         precision: 18, scale: 0
+    t.string  "Unit_Size_UOM",        limit: 4000
+    t.string  "Signing_Desc",         limit: 4000
+    t.decimal "VNPK_Qty",                          precision: 18, scale: 0
+    t.string  "Item_Flags",           limit: 4000
+    t.string  "Item_Desc_1",          limit: 4000
+    t.string  "Vendor_Stk_Nbr",       limit: 4000
+    t.string  "Size_Desc",            limit: 4000
+    t.integer "Fineline_Number",      limit: 4
+    t.string  "Fineline_Description", limit: 4000
+    t.decimal "VNPK_Cost",                         precision: 6,  scale: 2
+    t.string  "Item_Status",          limit: 4000
+    t.string  "Item_Type",            limit: 4000
+    t.date    "Effective_Date"
+    t.date    "Create_Date"
+    t.string  "Source",               limit: 4000
   end
 
   create_table "ws_inventory", id: false, force: :cascade do |t|

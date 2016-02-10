@@ -6,10 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.new
-admin.email = 'zxning@gmail.com'
-admin.password = 'password'
-admin.password_confirmation = 'password'
+admin = User.new({:email => "zxning@gmail.com", :role => "admin", :password => "123456", :password_confirmation => "123456" })
 admin.save!
-
-puts User.all.length
