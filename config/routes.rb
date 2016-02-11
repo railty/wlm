@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       post 'upload_items'
       post 'price_guide'
       get 'delete_wm_items'
+      get 'download_stores_products'
     end
     member do
       get 'download'

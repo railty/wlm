@@ -126,6 +126,13 @@ class Job < ActiveRecord::Base
     WmItem.destroy_all
   end
 
+  def self.download_stores_products
+    ct = ActiveRecord::Base.connection.execute_procedure 'dbo.Create_And_Download_Products_Stores'
+    ct = ct[0][0]['']
+    puts ct
+    return true
+  end
+
   private
   def destroy_files
     File.delete(self.input) if File.exist?(self.input)

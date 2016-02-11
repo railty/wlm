@@ -61,8 +61,8 @@
   },
   "Item Nbr" : {
     "table": "wm_items",
-    "field": "id",
-    "datatype": "Item_Nbr",
+    "field": "Item_Nbr",
+    "datatype": "interger",
     "options": ""
   },
   "Item Flags" : {

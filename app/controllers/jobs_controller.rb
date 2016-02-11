@@ -96,6 +96,18 @@ class JobsController < ApplicationController
     end
   end
 
+  def download_stores_products
+    respond_to do |format|
+     if Job.download_stores_products() then
+       format.html { redirect_to jobs_url, notice: 'download stores products successful.' }
+       format.json { head :no_content }
+     else
+       format.html { redirect_to jobs_url, notice: 'Error download stores products.' }
+       format.json { head :no_content }
+     end
+    end
+  end
+
   def download
     if params[:file] == "output" then
       respond_to do |format|
