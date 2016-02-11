@@ -6,8 +6,11 @@ class Job < ActiveRecord::Base
     self.start = Time.now
     self.save
     if self.job_type == 'priceGuide' then
+
+      conn = Item.connection_config
+      connstr = "#{conn[:host]}:#{conn[:port]}:#{conn[:database]}:#{conn[:username]}:#{conn[:password]}"
       require 'open3'
-      cmd = "pyoo/priceGuide.py #{self.input} #{self.output}"
+      cmd = "pyoo/priceGuide.py #{self.input} #{self.output} #{connstr}"
       logger.info cmd
       Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
         self.stdout = stdout.read

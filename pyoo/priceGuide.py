@@ -24,8 +24,12 @@ def getColor(row):
 parser = argparse.ArgumentParser(description='price guide process.')
 parser.add_argument('input_excel_filename', help='input excel filename')
 parser.add_argument('output_excel_filename', help='output excel filename')
+parser.add_argument('connstr', help='db connection string')
 args = parser.parse_args()
 fileName = args.input_excel_filename
+connstr = args.connstr
+
+db = lib.Db(connstr)
 
 headers = ['WM', 'Store', 'Prod_Name', 'Prod_Alias', 'RegPrice', 'OnSalePrice']
 logger = lib.getLogger("excel", False)
@@ -45,7 +49,6 @@ try:
         colItemNum = 11
         colExtra = 18
 
-
         i = 0
         for header in headers:
             sheet[rowHeader, colExtra + i].value = header
@@ -59,7 +62,7 @@ try:
             itemNum = int(itemNum)
             logger.info(itemNum)
 
-            item = lib.getProductInfo(itemNum)
+            item = db.getProductInfo(itemNum)
             if item is not None:
                 for i in range(len(headers)):
                     sheet[iRow, colExtra + i].value = item[i]

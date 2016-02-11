@@ -121,9 +121,16 @@ def hideColumns(self, cols):
 def rgb(r, g, b):
     return 256*(256*r+g)+b
 
-def getProductInfo(id):
-    with pytds.connect('192.168.86.1', 'pris', 'po', 'prispo') as conn:
-        with conn.cursor() as cur:
+class Db:
+    def __init__(self, connstr=None):
+        if connstr is None:
+            connstr = '192.168.86.1:1433:pris:po:prispo'
+        self.connstr = connstr
+        [server, port, dbname, username, password] = connstr.split(':')
+        self.conn = pytds.connect(server=server, database=dbname, user=username, password=password, port=port)
+
+    def getProductInfo(self, id):
+        with self.conn.cursor() as cur:
             cur.execute("select top 1 Item_Nbr, Store, Prod_Name, Prod_Alias, RegPrice, OnSalePrice from wm_items join products_stores on wm_items.Vendor_Stk_Nbr = products_stores.prod_num where wm_items.Item_Nbr='{}'".format(id))
             res = cur.fetchone()
             return res
