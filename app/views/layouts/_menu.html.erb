@@ -12,18 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="dropdown active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Items<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">91</a></li>
-            <li><a href="#">92</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li><%=link_to 'Items', items_path%></li>
         <li><%=link_to 'Jobs', jobs_path%></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

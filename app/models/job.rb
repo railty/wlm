@@ -63,6 +63,7 @@ class Job < ActiveRecord::Base
     end
 
     create_or_update_items(items) if items != nil
+    ActiveRecord::Base.connection.execute_procedure 'dbo.WmItems2Items'
   end
 
   def self.excelToAoA(excel)

@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
     @admin = params['admin']=='true' || false
 
     session[:report] = params['report'] || 'all'
+    session[:dept] = params['dept'] || 'all'
 
     @classes = ["inactive", "inactive", "inactive", "inactive", "inactive"]
     if session[:report] == 'duplicated_upc' then
@@ -23,6 +24,9 @@ class ItemsController < ApplicationController
       @classes[4] = "active"
     else
       @items = Item.all
+      if session[:dept] != 'all' then
+        @items = Item.where("department_id = ?", session[:dept])
+      end
       @classes[0] = "active"
     end
 
