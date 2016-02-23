@@ -36,5 +36,16 @@ sudo pip3 install bitarray
 
 sudo apt-get install libreoffice-base-core libreoffice-calc openjdk-7-jdk
 
-modify /usr/bin/soffice change to 
+modify /usr/bin/soffice change to
 SAL_ENABLE_FILE_LOCKING=0
+
+#rabbitmq
+sudo bash -c 'echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list'
+curl http://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sudo apt-key add -
+apt-get update
+sudo apt-get install rabbitmq-server
+sudo rabbitmq-plugins enable rabbitmq_management
+http://localhost:15672/.
+
+
+RAILS_ENV=test bundle exec rake db:migrate
