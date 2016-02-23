@@ -60,9 +60,9 @@ class JobsController < ApplicationController
     end
   end
 
-  def upload_items
+  def upload_excel
     respond_to do |format|
-     if Job.importWmItems(params['excel'].tempfile, params['excel'].original_filename) then
+     if Job.uploadExcel(params['excel'].tempfile, params['excel'].original_filename) then
        format.html { redirect_to jobs_url, notice: 'excel was successfully imported.' }
        format.json { head :no_content }
      else

@@ -8,8 +8,9 @@ class CreateJobs < ActiveRecord::Migration
       t.string :state
       t.string :stdout
       t.string :stderr
-      t.datetime :start
-      t.datetime :finish
+      t.datetime :enqueued_at
+      t.datetime :started_at
+      t.datetime :completed_at
 
       t.timestamps null: false
     end

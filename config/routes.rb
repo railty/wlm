@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :jobs do
     collection do
-      post 'upload_items'
+      post 'upload_excel'
       post 'price_guide'
       get 'delete_wm_items'
       get 'download_stores_products'

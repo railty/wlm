@@ -21,7 +21,7 @@
         <td><%= job.state %></td>
         <td><%= link_to job.input, download_job_path(job, file: 'input', format: "xlsx") %></td>
         <td><%= link_to job.output, download_job_path(job, file: 'output', format: "xlsx") %></td>
-        <td><%= job.finish==nil ? 0 : (job.finish-job.start).to_i.to_s + ' seconds' %></td>
+        <td><%= job.completed_at==nil ? 0 : (job.completed_at-job.started_at).to_i.to_s + ' seconds' %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -32,7 +32,7 @@
 
 <%if user_signed_in? and current_user.role == 'admin' then %>
   <h3>Upload daily report</h3>
-  <%= form_tag({action: :upload_items}, multipart: true) do %>
+  <%= form_tag({action: :upload_excel}, multipart: true) do %>
     <%= file_field_tag 'excel' %>
     <%= submit_tag("upload") %>
   <% end %>

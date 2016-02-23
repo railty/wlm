@@ -22,6 +22,24 @@ class Job < ActiveRecord::Base
     self.save
   end
 
+  def self.uploadExcel(originalExcelFile, originalExcelFileName)
+    if originalExcelFileName =~ /^Daily Report /i or originalExcelFileName =~ /^hwadiwa_/i then
+      job = Job.new
+      job.save
+      ext = File.extname(originalExcelFileName)
+      excelFile = "data/input/#{job.id}#{ext}"
+      FileUtils::copy(originalExcelFile, excelFile)
+      job.job_type = originalExcelFileName =~ /^Daily Report /i ? 'import_alp_products' : 'import_wm_products'
+      job.input = excelFile
+      job.save
+      job.enqueue
+      return job
+    elsif originalExcelFileName =~ /Pricing Guide/i then
+    else
+      return false
+    end
+  end
+
   def self.priceGuide(excelTempfile, excelFileName)
     tm = Time.now.strftime("%Y-%m-%d-%H-%M")
     ext = File.extname(excelFileName)
@@ -37,36 +55,58 @@ class Job < ActiveRecord::Base
     job.run
   end
 
-  def self.importWmItems(excelTempfile, excelFileName)
-    job = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
-    ext = File.extname(excelFileName)
-    excelFile = "data/input/#{job}#{ext}"
-    FileUtils::copy(excelTempfile, excelFile)
+  def perform
+    if self.job_type == 'import_alp_products' or self.job_type == 'import_wm_products' then
+      excelFile = self.input
+      data = excelToAoA(excelFile)
+      items = nil
+      if self.job_type == 'import_alp_products' then
+        mapping = JSON.parse(File.read("db/migrate/import_alp_products.json"))
+        items = translate(data, mapping)
+        items.each do |item|
+          item['Source'] = 'ALP'
+        end
+      else
+        mapping = JSON.parse(File.read("db/migrate/import_wm_products.json"))
+        items = translate(data, mapping)
 
-    data = excelToAoA(excelFile)
-    items = nil
-    if excelFileName =~ /^Daily Report /i then
-      mapping = JSON.parse(File.read("db/migrate/import_alp_products.json"))
-      items = translate(data, mapping)
-      items.each do |item|
-        item['Source'] = 'ALP'
+        items.each do |item|
+          item['Acct_Dept_Nbr'] = 94
+          item['Dept_Desc'] = 'PRODUCE'
+          item['Source'] = 'WM'
+        end
       end
-    elsif excelFileName =~ /^hwadiwa_/i then
-      mapping = JSON.parse(File.read("db/migrate/import_wm_products.json"))
-      items = translate(data, mapping)
 
-      items.each do |item|
-        item['Acct_Dept_Nbr'] = 94
-        item['Dept_Desc'] = 'PRODUCE'
-        item['Source'] = 'WM'
-      end
+      create_or_update_items(items) if items != nil
+      ActiveRecord::Base.connection.execute_procedure 'dbo.WmItems2Items'
     end
-
-    create_or_update_items(items) if items != nil
-    ActiveRecord::Base.connection.execute_procedure 'dbo.WmItems2Items'
   end
 
-  def self.excelToAoA(excel)
+  def self.delete_wm_items
+    WmItem.destroy_all
+  end
+
+  def self.download_stores_products
+    ct = ActiveRecord::Base.connection.execute_procedure 'dbo.Create_And_Download_Products_Stores'
+    ct = ct[0][0]['']
+    puts ct
+    return true
+  end
+
+  def enqueue
+    self.state = 'waiting'
+    self.enqueued_at = Time.now
+    self.save
+    SneakerJob.perform_later(self.id)
+  end
+
+  private
+  def destroy_files
+    File.delete(self.input) if self.input!=nil and File.exist?(self.input)
+    File.delete(self.output) if self.output!=nil and File.exist?(self.output)
+  end
+
+  def excelToAoA(excel)
     require 'open3'
     stdin, stdout, stderr, wait_thr = Open3.popen3('pyoo/excel2json.py', '--option=1', excel)
     result = stdout.gets(nil)
@@ -78,7 +118,7 @@ class Job < ActiveRecord::Base
     return data
   end
 
-  def self.create_or_update_items(items)
+  def create_or_update_items(items)
     items.each do |item|
       it = WmItem.find_by(:Item_Nbr => item['Item_Nbr'])
       if (it == nil) then
@@ -90,7 +130,7 @@ class Job < ActiveRecord::Base
     end
   end
 
-  def self.translate(data, mapping)
+  def translate(data, mapping)
     header = mapping.keys
     table = data['sheet']
     iHeader = 0
@@ -106,7 +146,7 @@ class Job < ActiveRecord::Base
     end
     items = []
     if rowHeader != nil then
-      puts table.length
+      logger.info "excel rows:#{table.length}"
       (iHeader+1 .. table.length-1).each do |i|
         row = table[i]
         item = {}
@@ -117,7 +157,7 @@ class Job < ActiveRecord::Base
             cell = cell.to_f if mapping[rowHeader[c]]['datatype'] == 'decimal'
             item[mapping[rowHeader[c]]['field']] = cell
           else
-            puts "skip #{rowHeader[c]}"
+            logger.info "skip #{rowHeader[c]}"
           end
         end
         items << item
@@ -125,22 +165,4 @@ class Job < ActiveRecord::Base
     end
     return items
   end
-
-  def self.delete_wm_items
-    WmItem.destroy_all
-  end
-
-  def self.download_stores_products
-    ct = ActiveRecord::Base.connection.execute_procedure 'dbo.Create_And_Download_Products_Stores'
-    ct = ct[0][0]['']
-    puts ct
-    return true
-  end
-
-  private
-  def destroy_files
-    File.delete(self.input) if File.exist?(self.input)
-    File.delete(self.output) if File.exist?(self.output)
-  end
-
 end

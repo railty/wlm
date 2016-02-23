@@ -37,8 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "daemons"
 gem 'devise'
-gem 'delayed_job_active_record'
-gem 'delayed-web'
+
+gem 'sneakers'
 
 gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap'
