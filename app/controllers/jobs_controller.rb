@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -109,12 +109,9 @@ class JobsController < ApplicationController
   end
 
   def download
-    if params[:file] == "output" then
-      respond_to do |format|
-        format.xlsx do
-          send_data File.read(@job.output), type: "application/xlsx", filename: Pathname.new(@job.output).basename.to_s, disposition: 'inline'
-        end
-      end
+    filename = params['path'] + '.' + params['format']
+    if File.exist?(filename) then
+      send_data File.read(filename), type: "application/xlsx", filename: Pathname.new(filename).basename.to_s, disposition: 'inline'
     end
   end
 

@@ -1,58 +1,26 @@
 class Job < ActiveRecord::Base
   before_destroy :destroy_files
 
-  def run
-    self.state = 'processing'
-    self.start = Time.now
-    self.save
-    if self.job_type == 'priceGuide' then
-
-      conn = Item.connection_config
-      connstr = "#{conn[:host]}:#{conn[:port]}:#{conn[:database]}:#{conn[:username]}:#{conn[:password]}"
-      require 'open3'
-      cmd = "pyoo/priceGuide.py #{self.input} #{self.output} #{connstr}"
-      logger.info cmd
-      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        self.stdout = stdout.read
-        self.stderr = stderr.read
-      end
-    end
-    self.finish = Time.now
-    self.state = 'completed'
-    self.save
-  end
-
   def self.uploadExcel(originalExcelFile, originalExcelFileName)
-    if originalExcelFileName =~ /^Daily Report /i or originalExcelFileName =~ /^hwadiwa_/i then
-      job = Job.new
-      job.save
-      ext = File.extname(originalExcelFileName)
-      excelFile = "data/input/#{job.id}#{ext}"
-      FileUtils::copy(originalExcelFile, excelFile)
-      job.job_type = originalExcelFileName =~ /^Daily Report /i ? 'import_alp_products' : 'import_wm_products'
-      job.input = excelFile
-      job.save
-      job.enqueue
-      return job
-    elsif originalExcelFileName =~ /Pricing Guide/i then
-    else
-      return false
-    end
-  end
-
-  def self.priceGuide(excelTempfile, excelFileName)
-    tm = Time.now.strftime("%Y-%m-%d-%H-%M")
-    ext = File.extname(excelFileName)
-
-    job = self.new
-    job.input = "data/input/#{tm}#{ext}"
-    job.output = "data/output/#{tm}.xlsx"
-    FileUtils::copy(excelTempfile, job.input)
-    job.name = "Price Guide #{tm}"
-    job.job_type = 'priceGuide'
-    job.state = 'waiting'
+    job = Job.new
     job.save
-    job.run
+    ext = File.extname(originalExcelFileName)
+    excelFile = "data/input/#{job.id}#{ext}"
+    FileUtils::copy(originalExcelFile, excelFile)
+    job.input = excelFile
+
+    if originalExcelFileName =~ /^Daily Report /i then
+      job.job_type = 'import_alp_products'
+    elsif originalExcelFileName =~ /^hwadiwa_/i then
+      job.job_type = 'import_wm_products'
+    elsif originalExcelFileName =~ /Pricing Guide/i then
+      job.job_type = 'pricing_guide'
+    else
+      job.job_type = 'unknown excel'
+    end
+    job.save
+    job.enqueue
+    return job
   end
 
   def perform
@@ -76,9 +44,23 @@ class Job < ActiveRecord::Base
           item['Source'] = 'WM'
         end
       end
-
-      create_or_update_items(items) if items != nil
+      iInsert = 0
+      iUpdate = 0
+      iInsert, iUpdate = create_or_update_items(items) if items != nil
       ActiveRecord::Base.connection.execute_procedure 'dbo.WmItems2Items'
+      return "inserted: #{iInsert}, updated: #{iUpdate}"
+    elsif self.job_type == 'pricing_guide' then
+      conn = Item.connection_config
+      connstr = "#{conn[:host]}:#{conn[:port]}:#{conn[:database]}:#{conn[:username]}:#{conn[:password]}"
+      output = "data/output/#{self.id}.xlsx"
+      require 'open3'
+      cmd = "pyoo/priceGuide.py #{self.input} #{output} #{connstr}"
+      logger.info cmd
+      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+        self.stdout = stdout.read
+        self.stderr = stderr.read
+      end
+      return output
     end
   end
 
@@ -119,15 +101,20 @@ class Job < ActiveRecord::Base
   end
 
   def create_or_update_items(items)
+    iUpdate = 0
+    iInsert = 0
     items.each do |item|
       it = WmItem.find_by(:Item_Nbr => item['Item_Nbr'])
       if (it == nil) then
         it = WmItem.create(item)
+        iInsert = iInsert + 1
       else
         it.update(item)
+        iUpdate = iUpdate + 1
       end
       it.save
     end
+    return iInsert, iUpdate
   end
 
   def translate(data, mapping)

@@ -17,10 +17,10 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.name %></td>
+        <td><%= job.job_type %></td>
         <td><%= job.state %></td>
-        <td><%= link_to job.input, download_job_path(job, file: 'input', format: "xlsx") %></td>
-        <td><%= link_to job.output, download_job_path(job, file: 'output', format: "xlsx") %></td>
+        <td><%= display_input(job) %></td>
+        <td><%= display_output(job) %></td>
         <td><%= job.completed_at==nil ? 0 : (job.completed_at-job.started_at).to_i.to_s + ' seconds' %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

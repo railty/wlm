@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class JobTest < ActiveSupport::TestCase
-  test "upload excel" do
+  test "daily report excel" do
     Item.destroy_all
     WmItem.destroy_all
 
@@ -16,5 +16,16 @@ class JobTest < ActiveSupport::TestCase
     job.perform
     assert Item.all.length == 6654
     assert WmItem.all.length == 6654
+  end
+
+  test "pricing guide" do
+    excelFileName = 'test/fixtures/Week 02 Pricing Guide.xlsx'
+    job = Job.uploadExcel(excelFileName, File.basename(excelFileName))
+    output = job.perform
+    puts job.job_type
+    puts job.input
+    puts output
+    File.size(output)
+    assert File.size(output) == File.size('test/fixtures/Week 02 Pricing Guide Output.xlsx')
   end
 end
