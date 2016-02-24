@@ -10,10 +10,13 @@ class Job < ActiveRecord::Base
     job.input = excelFile
 
     if originalExcelFileName =~ /^Daily Report /i then
+      job.name = 'Import ALP Report'
       job.job_type = 'import_alp_products'
     elsif originalExcelFileName =~ /^hwadiwa_/i then
+      job.name = 'Import WM Report'
       job.job_type = 'import_wm_products'
     elsif originalExcelFileName =~ /Pricing Guide/i then
+      job.name = 'Create Pricing Guide'
       job.job_type = 'pricing_guide'
     else
       job.job_type = 'unknown excel'
@@ -61,18 +64,46 @@ class Job < ActiveRecord::Base
         self.stderr = stderr.read
       end
       return output
+    elsif self.job_type == 'tsql_sp' then
+      result = 0
+      rc = ActiveRecord::Base.connection.execute_procedure(self.input, result)
+      #rc is a arrah of hash of the return
+      result = rc[0]['rc']
+      return result
     end
   end
 
   def self.delete_wm_items
-    WmItem.destroy_all
+    job = Job.new
+    job.save
+    job.name = 'Delete all items'
+    job.input = 'dbo.DeleteWmItemsAndItems'
+    job.job_type = 'tsql_sp'
+    job.save
+    job.enqueue
+    return job
+  end
+
+  def self.push_items
+    job = Job.new
+    job.save
+    job.name = 'Push items'
+    job.input = 'dbo.PushItems'
+    job.job_type = 'tsql_sp'
+    job.save
+    job.enqueue
+    return job
   end
 
   def self.download_stores_products
-    ct = ActiveRecord::Base.connection.execute_procedure 'dbo.Create_And_Download_Products_Stores'
-    ct = ct[0][0]['']
-    puts ct
-    return true
+    job = Job.new
+    job.save
+    job.name = 'Update Products_Stores'
+    job.input = 'dbo.Create_And_Download_Products_Stores'
+    job.job_type = 'tsql_sp'
+    job.save
+    job.enqueue
+    return job
   end
 
   def enqueue

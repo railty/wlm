@@ -134,3 +134,9 @@ class Db:
             cur.execute("select top 1 Item_Nbr, Store, Prod_Name, Prod_Alias, RegPrice, OnSalePrice from wm_items join products_stores on wm_items.Vendor_Stk_Nbr = products_stores.prod_num where wm_items.Item_Nbr='{}'".format(id))
             res = cur.fetchone()
             return res
+
+    def getPriceChangingList(self):
+        with self.conn.cursor() as cur:
+            cur.execute("select id, upc, signing_desc, unit_retail, proposed_price from items where proposed_price is not null")
+            res = cur.fetchall()
+            return res

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :jobs do
     collection do
       post 'upload_excel'
-      post 'price_guide'
+      post 'push_items'
       get 'delete_wm_items'
       get 'download_stores_products'
     end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
     collection do
       post 'complete_price'
+      get 'print_price'
     end
   end
   get 'download/*path', to: 'jobs#download'

@@ -98,11 +98,16 @@ class ItemsController < ApplicationController
   end
 
   def complete_price
-    Item.complete_price
+    Item.complete_price_changing
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Price was successfully changed.' }
       format.json { head :no_content }
     end
+  end
+
+  def print_price
+    filename = Item.print_price_changing
+    send_data File.read(filename), type: "application/pdf", filename: Pathname.new(filename).basename.to_s, disposition: 'inline'
   end
 
   def print

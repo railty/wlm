@@ -28,4 +28,36 @@ class JobTest < ActiveSupport::TestCase
     File.size(output)
     assert File.size(output) == File.size('test/fixtures/Week 02 Pricing Guide Output.xlsx')
   end
+
+  test "download_stores_products" do
+    ct = ActiveRecord::Base.connection.exec_query "select count(*) as ct from products_stores"
+    puts ct[0]['ct']
+
+    job = Job.download_stores_products
+    job.perform
+
+    ct = ActiveRecord::Base.connection.exec_query "select count(*) as ct from products_stores"
+    puts ct[0]['ct']
+
+    assert ct > 100000
+  end
+
+  test "delete all items" do
+    ct1 = ActiveRecord::Base.connection.exec_query "select count(*) as ct from items"
+    puts ct1[0]['ct']
+    ct2 = ActiveRecord::Base.connection.exec_query "select count(*) as ct from wm_items"
+    puts ct2[0]['ct']
+
+    job = Job.delete_wm_items
+    job.perform
+
+    ct3 = ActiveRecord::Base.connection.exec_query "select count(*) as ct from items"
+    ct3 = ct3[0]['ct']
+    ct4 = ActiveRecord::Base.connection.exec_query "select count(*) as ct from wm_items"
+    ct4 = ct4[0]['ct']
+
+    assert ct3 == 0
+    assert ct4 == 0
+  end
+  
 end

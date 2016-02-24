@@ -63,7 +63,7 @@ class JobsController < ApplicationController
   def upload_excel
     respond_to do |format|
      if Job.uploadExcel(params['excel'].tempfile, params['excel'].original_filename) then
-       format.html { redirect_to jobs_url, notice: 'excel was successfully imported.' }
+       format.html { redirect_to jobs_url, notice: 'excel import was successfully scheduled.' }
        format.json { head :no_content }
      else
        format.html { redirect_to jobs_url, notice: 'Error import file.' }
@@ -72,10 +72,11 @@ class JobsController < ApplicationController
     end
   end
 
-  def price_guide
+  def push_items
+    debugger
     respond_to do |format|
-     if Job.priceGuide(params['excel'].tempfile, params['excel'].original_filename) then
-       format.html { redirect_to jobs_url, notice: 'excel was successfully imported.' }
+     if Job.push_items() then
+       format.html { redirect_to jobs_url, notice: 'excel import was successfully scheduled.' }
        format.json { head :no_content }
      else
        format.html { redirect_to jobs_url, notice: 'Error import file.' }
@@ -87,7 +88,7 @@ class JobsController < ApplicationController
   def delete_wm_items
     respond_to do |format|
      if Job.delete_wm_items() then
-       format.html { redirect_to jobs_url, notice: 'all wm_items were successfully deleted.' }
+       format.html { redirect_to jobs_url, notice: 'delete all items were successfully scheduled.' }
        format.json { head :no_content }
      else
        format.html { redirect_to jobs_url, notice: 'Error delete wm_items.' }
@@ -99,7 +100,7 @@ class JobsController < ApplicationController
   def download_stores_products
     respond_to do |format|
      if Job.download_stores_products() then
-       format.html { redirect_to jobs_url, notice: 'download stores products successful.' }
+       format.html { redirect_to jobs_url, notice: 'download stores products successful scheduled.' }
        format.json { head :no_content }
      else
        format.html { redirect_to jobs_url, notice: 'Error download stores products.' }
