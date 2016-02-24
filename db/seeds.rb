@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.new({:email => "zxning@gmail.com", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
-User.new({:email => "sshi@orientalfoods.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
+User.new({:email => "smile.shi@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
 User.new({:email => "jacky.yu@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!

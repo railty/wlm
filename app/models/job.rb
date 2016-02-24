@@ -84,15 +84,27 @@ class Job < ActiveRecord::Base
     return job
   end
 
-  def self.push_items
+  def self.push_items(stores)
     job = Job.new
     job.save
-    job.name = 'Push items'
-    job.input = 'dbo.PushItems'
+    job.name = 'Upload items'
+    job.input = 'dbo.UploadItems'
     job.job_type = 'tsql_sp'
     job.save
     job.enqueue
-    return job
+
+    jobs = [job]
+    stores.each do |store|
+      job = Job.new
+      job.save
+      job.name = "Push items #{store}"
+      job.input = "dbo.PushItems #{store}"
+      job.job_type = 'tsql_sp'
+      job.save
+      job.enqueue
+      jobs << job
+    end
+    return jobs
   end
 
   def self.download_stores_products

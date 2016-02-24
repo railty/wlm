@@ -74,8 +74,13 @@ class JobsController < ApplicationController
 
   def push_items
     debugger
+
+    stores = []
+    ['HQSVR2', 'WM1080', 'ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
+      stores << store if params[store] != nil
+    end
     respond_to do |format|
-     if Job.push_items() then
+     if Job.push_items(stores) then
        format.html { redirect_to jobs_url, notice: 'excel import was successfully scheduled.' }
        format.json { head :no_content }
      else

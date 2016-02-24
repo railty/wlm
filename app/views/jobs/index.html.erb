@@ -16,7 +16,7 @@
 <hr/>
 
 <%if user_signed_in? and current_user.role == 'admin' then %>
-  <h3>Upload Daily Report</h3>
+  <h3>Upload Excel</h3>
   <%= form_tag({action: :upload_excel}, multipart: true) do %>
 
     <label class="btn btn-primary" for="excel">

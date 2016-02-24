@@ -49,7 +49,7 @@ module JobsHelper
     str = ''
     ['HQSVR2', 'WM1080', 'ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
       state = store=='HQSVR2' ? 'disabled' : 'enabled'
-      str = str + "<div class='checkbox #{state}'><label><input type='checkbox' value='' #{state} checked>#{store}</label></div>"
+      str = str + "<div class='checkbox #{state}'><label><input type='checkbox' id='#{store}' name='#{store}' value='' #{state} checked>#{store}</label></div>"
     end
     return str.html_safe
   end
