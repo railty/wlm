@@ -43,4 +43,65 @@ namespace :wlm do
 
     Rails.logger.info "kill daemon..."
   end
+
+  def clear_sp(conn)
+    sps = get_sps(conn)
+    sps.each do |sp|
+      conn.execute("drop procedure #{sp}")
+    end
+  end
+
+  def get_sps(conn)
+    res = conn.exec_query("select ROUTINE_NAME from information_schema.routines where routine_type = 'PROCEDURE'")
+    sps = []
+    res.each do |result|
+      sps << result['ROUTINE_NAME']
+    end
+    return sps
+  end
+
+  desc "download store procedure"
+  task dl_sp: :environment do
+    conn = ActiveRecord::Base.connection
+    db_name = conn.current_database
+    folder = "tsql/#{db_name}"
+    FileUtils.mkdir_p folder
+
+    res = conn.exec_query("select ROUTINE_NAME, ROUTINE_DEFINITION from information_schema.routines where routine_type = 'PROCEDURE'")
+    res.each do |result|
+      filename = "#{folder}/#{result['ROUTINE_NAME']}.sql"
+      File.open(filename, 'w') { |file| file.write(result['ROUTINE_DEFINITION']) }
+    end
+  end
+
+  desc "clear store procedure"
+  task clear_sp: :environment do
+    conn = ActiveRecord::Base.connection
+    clear_sp(conn)
+  end
+
+  desc "upload store procedure"
+  task ul_sp: :environment do
+    conn = ActiveRecord::Base.connection
+    sps = get_sps(conn)
+
+    db_name = conn.current_database
+    folder = "tsql/#{db_name}"
+
+    Dir["#{folder}/*.sql"].each do |file|
+      puts file
+      sql = File.read(file)
+      if file =~ /([^\/]*)\.sql/ then
+        sp_name = $1
+        if sps.include?(sp_name) then
+          sql.gsub!(/create PROCEDURE \[dbo\]\.\[#{sp_name}\]/mi, "alter PROCEDURE [dbo].[#{sp_name}]")
+        end
+        #puts sql
+        conn.execute("SET ANSI_NULLS ON")
+        conn.execute("SET QUOTED_IDENTIFIER ON")
+        conn.execute(sql)
+      end
+    end
+  end
+
 end

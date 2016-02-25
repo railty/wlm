@@ -59,5 +59,27 @@ class JobTest < ActiveSupport::TestCase
     assert ct3 == 0
     assert ct4 == 0
   end
+
+  test 'upload and push items' do
+    #jobs = Job.push_items(['OFC', 'ALP'])
+    stores =['OFC', 'ALP']
+    jobs = Job.push_items(stores)
+
+    upload_job = jobs.shift
+    assert jobs.length == stores.length
+
+    output = upload_job.perform
+    upload_job.output = output
+    upload_job.save
+    assert output == 'items uploaded:123'
+
+    jobs.each do |job|
+      output = job.perform
+      job.output = output
+      store = stores.shift
+      assert output == "#{store} items pushed:456"
+      job.save
+    end
+  end
   
 end

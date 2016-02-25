@@ -73,8 +73,6 @@ class JobsController < ApplicationController
   end
 
   def push_items
-    debugger
-
     stores = []
     ['HQSVR2', 'WM1080', 'ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
       stores << store if params[store] != nil

@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :products_store, :foreign_key => "vendor_stk_nbr"
+  has_one :wm_item, :foreign_key => "Item_Nbr"
 
   def print
     Item.execute_procedure "Print_Product_Label", self.upc

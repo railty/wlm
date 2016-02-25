@@ -65,8 +65,16 @@ class Job < ActiveRecord::Base
       end
       return output
     elsif self.job_type == 'tsql_sp' then
-      result = 0
-      rc = ActiveRecord::Base.connection.execute_procedure(self.input, result)
+      sp_name, *sp_args = self.input.split(' ')
+      args = {}
+      sp_args.each do |arg|
+        k, v = arg.split('=')
+        args[k] = v
+      end
+      args['rc'] = 0
+      #execute_procedure takes the second args as a hash, name to value
+      rc = ActiveRecord::Base.connection.execute_procedure(sp_name, args)
+
       #rc is a arrah of hash of the return
       result = rc[0]['rc']
       return result
@@ -98,7 +106,7 @@ class Job < ActiveRecord::Base
       job = Job.new
       job.save
       job.name = "Push items #{store}"
-      job.input = "dbo.PushItems #{store}"
+      job.input = "dbo.PushItems store=#{store}"
       job.job_type = 'tsql_sp'
       job.save
       job.enqueue

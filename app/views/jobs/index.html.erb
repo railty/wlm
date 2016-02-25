@@ -34,7 +34,7 @@
   <hr/>
   <h3>Push to Stores</h3>
   <%= form_tag({action: :push_items}) do %>
-    <%=check_stores%>
+    <%= check_stores %>
     <%= submit_tag("Push", :class=>"btn btn-primary") %>
   <% end %>
   <hr/>
