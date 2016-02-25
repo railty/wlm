@@ -3,14 +3,12 @@
 -- Create date: <March 3, 2011>
 -- Description:	Calculate Inventory
 -- =============================================
-CREATE PROCEDURE [dbo].[CreateAndDownloadProductsStores]
+CREATE PROCEDURE [dbo].[CreateAndDownloadProductsStores](@rc varchar(250) out)
 AS
 BEGIN
-declare @ct integer;
 	SET NOCOUNT ON;
 
-	WAITFOR DELAY '00:00:12';
+	WAITFOR DELAY '00:00:2';
 
-	select @ct = 123;
-	return @ct;
+	select rc = '123'
 END

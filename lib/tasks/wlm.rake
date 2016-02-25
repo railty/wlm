@@ -86,7 +86,7 @@ namespace :wlm do
     sps = get_sps(conn)
 
     db_name = conn.current_database
-    folder = "tsql/#{db_name}"
+    folder = "tsql/#{Rails.env}"
 
     Dir["#{folder}/*.sql"].each do |file|
       puts file

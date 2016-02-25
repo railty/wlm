@@ -119,7 +119,7 @@ class Job < ActiveRecord::Base
     job = Job.new
     job.save
     job.name = 'Update Products_Stores'
-    job.input = 'dbo.Create_And_Download_Products_Stores'
+    job.input = 'dbo.CreateAndDownloadProductsStores'
     job.job_type = 'tsql_sp'
     job.save
     job.enqueue
