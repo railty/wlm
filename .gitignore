@@ -19,7 +19,8 @@
 pyoo/__pycache__
 
 /data/**/*.json
-/data/**/*.xls*
+/data/input/*.xls*
+/data/output/*.xls*
 /data/**/.~*
 
 /config/database.*
