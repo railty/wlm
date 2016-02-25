@@ -1,2 +1,14 @@
-u = User.new({:email => "zxning@gmail.com", :role => "admin", :password => "123456", :password_confirmation => "123456" })
-u.save
+conn = ActiveRecord::Base.connection
+sp1 = 'WmItems2Items'
+texts = conn.execute_procedure("sp_helptext '#{sp1}'")
+
+sql = ''
+texts.each do |text|
+  sql = sql + text['Text']
+end
+
+sql.gsub!(/create PROCEDURE \[dbo\]\.\[#{sp1}\]/mi, "create PROCEDURE [dbo].[#{sp1}_bak]")
+puts sql
+conn.execute("SET ANSI_NULLS ON")
+conn.execute("SET QUOTED_IDENTIFIER ON")
+conn.execute(sql)
