@@ -1,1 +1,1 @@
-sneakers: RAILS_ENV=production bundle exec rake sneakers:run
+sneakers: bundle exec rake sneakers:run
