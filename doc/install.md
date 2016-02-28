@@ -49,3 +49,6 @@ http://localhost:15672/.
 
 
 RAILS_ENV=test bundle exec rake db:migrate
+
+
+sudo apt-get install imagemagick -y
