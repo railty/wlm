@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210020133) do
+ActiveRecord::Schema.define(version: 20160228190048) do
+
+  create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
+    t.varchar "COUNTRY_NAME",  limit: 32
+    t.varchar "OFFICIAL_NAME", limit: 64
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string   "name",       limit: 32
@@ -62,6 +67,25 @@ ActiveRecord::Schema.define(version: 20160210020133) do
     t.datetime "completed_at"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "item_id",            limit: 4
+    t.string   "photo_type",         limit: 4000
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "image_file_name",    limit: 4000
+    t.string   "image_content_type", limit: 4000
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+  end
+
+  create_table "products_stores", primary_key: "Prod_Num", force: :cascade do |t|
+    t.string  "Store",       limit: 10
+    t.string  "Prod_Name",   limit: 50
+    t.string  "Prod_Alias",  limit: 40
+    t.decimal "RegPrice",               precision: 6, scale: 2
+    t.decimal "OnSalePrice",            precision: 6, scale: 2
   end
 
   create_table "users", force: :cascade do |t|

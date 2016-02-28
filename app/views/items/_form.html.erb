@@ -40,6 +40,20 @@
     </tr>
   </table>
 
-  <%= f.submit %>
+
+  <%= f.fields_for :photos do |photo| %>
+    <%= photo.label :photo_type %>
+    <%= photo.text_field :photo_type %>
+    <%= image_tag photo.object.image.url(:thumb) %>
+    <br/>
+  <% end %>
+  <br/>
+  <%= f.fields_for :photos, @item.photos.build do |photo| %>
+    <%= photo.label :photo_type %>
+    <%= photo.text_field :photo_type %>
+    <%= photo.file_field :image %>
+  <% end %>
+
+  <%= f.submit :class=>"btn btn-primary" %>
 
 <% end %>

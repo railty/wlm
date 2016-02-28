@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+  has_many :photos, :dependent => :delete_all
+  accepts_nested_attributes_for :photos
+  
   belongs_to :products_store, :foreign_key => "vendor_stk_nbr"
   has_one :wm_item, :foreign_key => "Item_Nbr"
 
