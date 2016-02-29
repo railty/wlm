@@ -17,9 +17,9 @@
       <th>Value</th>
     </tr>
     <tr>
-      <td>Country of Origin</td>
+      <td><%= f.label(:origin) %></td>
       <td>
-        <%= f.select(:origin, :selected => 'CA') do %>
+        <%= f.select(:origin, [], {}, {class: "form-control"}) do %>
           <% Item.countrys.each do |c| -%>
             <% if c[0]==@item.origin then %>
               <%= content_tag(:option, c[1], value: c[0], title: c[2], selected: 'selected') %>
@@ -31,12 +31,16 @@
       </td>
     </tr>
     <tr>
-      <td>Current Price</td>
+      <td><%= f.label(:unit_retail, 'Unit Retail/(Current Price)') %></td>
       <td><%= number_to_currency(@item.unit_retail) %></td>
     </tr>
     <tr>
-      <td>Proposed Price</td>
+      <td><%= f.label(:proposed_price) %></td>
       <td><%= f.text_field(:proposed_price) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label(:proposed_price_ceiling) %></td>
+      <td><%= f.text_field(:proposed_price_ceiling) %></td>
     </tr>
   </table>
 
