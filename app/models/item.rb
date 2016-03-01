@@ -1,9 +1,20 @@
 class Item < ActiveRecord::Base
   has_many :photos, :dependent => :delete_all
   accepts_nested_attributes_for :photos
-  
+
   belongs_to :products_store, :foreign_key => "vendor_stk_nbr"
   has_one :wm_item, :foreign_key => "Item_Nbr"
+
+  validates :proposed_price, numericality: true
+  validates :proposed_price_ceiling, numericality: true
+  validate :price_less_than_ceiling
+
+  def price_less_than_ceiling
+    if self.proposed_price >= self.price_ceiling then
+      errors.add(:customer_price, "price can't be more than price ceiling, moved to proposed price ceiling")
+      self.proposed_price_ceiling = self.proposed_price
+    end
+  end
 
   def print
     Item.execute_procedure "Print_Product_Label", self.upc

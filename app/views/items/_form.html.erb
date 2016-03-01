@@ -32,10 +32,14 @@
     </tr>
     <tr>
       <td><%= f.label(:unit_retail, 'Unit Retail/(Current Price)') %></td>
-      <td><%= number_to_currency(@item.unit_retail) %></td>
+      <td><%= number_to_currency(@item.unit_retail)%></td>
     </tr>
     <tr>
-      <td><%= f.label(:proposed_price) %></td>
+      <td><%= f.label(:price_ceiling) %></td>
+      <td><%= number_to_currency(@item.price_ceiling) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label(:proposed_price)%></td>
       <td><%= f.text_field(:proposed_price) %></td>
     </tr>
     <tr>
@@ -53,7 +57,14 @@
 
     <%= f.fields_for :photos do |photo| %>
       <tr>
-        <td><%= photo.text_field :photo_type %></td>
+        <td>
+          <label class="radio-inline">
+            <%checked = photo.object.photo_type == 'Primary' ? 'checked' : '' %>
+            <input type="radio" name="radioPrimary" value="<%=photo.object.id%>" <%=checked%> >
+            Primary
+          </label>
+          <%= photo.hidden_field :photo_type, :class=>'photo_type' %>
+        </td>
         <td><%= image_tag photo.object.image.url(:thumb) %></td>
         <td><%= link_to 'Destroy', item_photo_path(@item, photo.object), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
@@ -61,6 +72,7 @@
   </table>
   <%= f.submit :class=>"btn btn-primary" %>
 <% end %>
+
 <br/>
 
 <%= form_for(@item) do |f| %>
@@ -78,5 +90,5 @@
     </tr>
   <% end %>
   </table>
-  <%= f.submit :class=>"btn btn-primary" %>
+  <%= f.submit 'Upload', :class=>"btn btn-primary" %>
 <% end %>

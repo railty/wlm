@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 
     if params['search'] != nil then
       search = "%#{params['search']}%"
-      @items = @items.where("vendor_stk_nbr like ? or upc like ? or convert(char(8), id) like ?", search, search, search)
+      @items = @items.where("vendor_stk_nbr like ? or upc like ? or convert(char(8), id) like ? or signing_desc like ?", search, search, search, search)
     end
 
     @items = @items.paginate(:page => params[:page], :per_page => 100).order('upc, id')
@@ -126,6 +126,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params[:item].permit([:origin, :proposed_price, photos_attributes: [:photo_type, :image]])
+      params[:item].permit([:origin, :proposed_price, :proposed_price_ceiling, photos_attributes: [:photo_type, :image, :id]])
     end
 end

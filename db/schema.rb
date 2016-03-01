@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160228190048) do
 
-  create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
-    t.varchar "COUNTRY_NAME",  limit: 32
-    t.varchar "OFFICIAL_NAME", limit: 64
-  end
-
   create_table "departments", force: :cascade do |t|
     t.string   "name",       limit: 32
     t.datetime "created_at",            null: false
