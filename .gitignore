@@ -24,3 +24,4 @@ pyoo/__pycache__
 /data/**/.~*
 
 /config/database.*
+/public/system/**

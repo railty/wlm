@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :items do
+    resources :photos    
     member do
       get "print"
     end
