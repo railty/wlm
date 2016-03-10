@@ -54,7 +54,7 @@
       <th>Image</th>
       <th>Delete</th>
     </tr>
-
+    <!--
     <%= f.fields_for :photos do |photo| %>
       <tr>
         <td>
@@ -69,11 +69,13 @@
         <td><%= link_to 'Destroy', item_photo_path(@item, photo.object), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
+    -->
   </table>
   <%= f.submit :class=>"btn btn-primary" %>
 <% end %>
 
 <br/>
+<!--
 
 <%= form_for(@item) do |f| %>
   <%= f.fields_for :photos, @item.photos.build do |photo| %>
@@ -92,3 +94,4 @@
   </table>
   <%= f.submit 'Upload', :class=>"btn btn-primary" %>
 <% end %>
+-->

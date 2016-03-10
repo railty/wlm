@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   validate :price_less_than_ceiling
 
   def price_less_than_ceiling
-    if self.proposed_price >= self.price_ceiling then
+    if self.proposed_price!=nil and self.proposed_price >= self.price_ceiling then
       errors.add(:customer_price, "price can't be more than price ceiling, moved to proposed price ceiling")
       self.proposed_price_ceiling = self.proposed_price
     end

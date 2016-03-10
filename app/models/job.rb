@@ -73,10 +73,30 @@ class Job < ActiveRecord::Base
       end
       args['rc'] = 0
       #execute_procedure takes the second args as a hash, name to value
+      #what execute_procedure will return?
+      #it will return a array of array of hash, each select statement in sp will return as a array of hash, and the concat into a arra
+      #if there is only 1 select, it will return a array of hash
+      #for example
+=begin
+      alter PROCEDURE [dbo].[test]
+      AS
+      BEGIN
+      declare @ct integer;
+      	SET NOCOUNT ON;
+
+
+      	select top 3 * from departments;
+      	select top 3 * from items;
+      	select rc = 'aaa', x=1, y = 2 ;
+      	select '1111' as output, '2222' as abc;
+      END
+=end
+      #will return an array of 4, each of them is a array of hash
+      #the last 2 select are same, in different syntax
       rc = ActiveRecord::Base.connection.execute_procedure(sp_name, args)
 
-      #rc is a arrah of hash of the return
-      result = rc[0]['rc']
+      #if rc[-1]==Array then multiple select in sp else #only 1 select in sp
+      result = rc[-1].class==Array ? rc[-1][0]['output'] : rc[-1]['output']
       return result
     end
   end
