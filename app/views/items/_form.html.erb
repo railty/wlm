@@ -20,7 +20,7 @@
       <td><%= f.label(:origin) %></td>
       <td>
         <%= f.select(:origin, [], {}, {class: "form-control"}) do %>
-          <% Item.countrys.each do |c| -%>
+          <% Item.countries.each do |c| -%>
             <% if c[0]==@item.origin then %>
               <%= content_tag(:option, c[1], value: c[0], title: c[2], selected: 'selected') %>
             <% else %>

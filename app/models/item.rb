@@ -5,8 +5,8 @@ class Item < ActiveRecord::Base
   belongs_to :products_store, :foreign_key => "vendor_stk_nbr"
   has_one :wm_item, :foreign_key => "Item_Nbr"
 
-  validates :proposed_price, numericality: true
-  validates :proposed_price_ceiling, numericality: true
+  validates :proposed_price, :numericality => true, :allow_nil => true
+  validates :proposed_price_ceiling, :numericality => true, :allow_nil => true
   validate :price_less_than_ceiling
 
   def price_less_than_ceiling
@@ -50,7 +50,7 @@ class Item < ActiveRecord::Base
     return "#{output_file}.pdf"
   end
 
-  def self.countrys
+  def self.countries
     countries = []
     sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode"
     results = ActiveRecord::Base.connection.select_all(sql)
