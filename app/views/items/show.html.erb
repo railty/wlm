@@ -24,6 +24,6 @@
   <%= image_tag photo.image.url(:thumb) %>
 <%end%>
 
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%=link_to 'Edit', edit_item_path(@item), :class=>"btn btn-primary", :role=>"button"%>
+<%=link_to 'Print', print_item_path(@item), :class=>"btn btn-primary", :role=>"button" %>
+<%=link_to 'Back', items_path, :class=>"btn btn-primary", :role=>"button" %>

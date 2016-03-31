@@ -25,6 +25,7 @@ class Item < ActiveRecord::Base
       item.unit_retail = item.proposed_price
       item.proposed_price = nil
       item.save
+      item.print
     end
   end
 
@@ -51,11 +52,18 @@ class Item < ActiveRecord::Base
   end
 
   def self.countries
+    tops = ['United States', 'Canada', 'China']
     countries = []
-    sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode"
+    sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode Order by COUNTRY_NAME"
     results = ActiveRecord::Base.connection.select_all(sql)
     results.each do |res|
-      countries << [res['COUNTRY_CODE'], res['COUNTRY_NAME'], res['OFFICIAL_NAME']]
+      name = res['COUNTRY_NAME'].strip!
+      if tops.include?(name) then
+        countries.unshift([res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']])
+      else
+        countries << [res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']]
+      end
+
     end
     return countries
   end
