@@ -52,7 +52,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.countries
-    tops = ['United States', 'Canada', 'China']
+    tops = ['Canada', 'United States', 'China', 'Mexico', 'Costa Rica', 'Peru', 'Guatemala', 'Taiwan', 'Korea, South', 'Jamaica']
     countries = []
     sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode Order by COUNTRY_NAME"
     results = ActiveRecord::Base.connection.select_all(sql)
