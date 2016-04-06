@@ -57,7 +57,7 @@ class Item < ActiveRecord::Base
     sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode Order by COUNTRY_NAME"
     results = ActiveRecord::Base.connection.select_all(sql)
     results.each do |res|
-      name = res['COUNTRY_NAME'].strip!
+      name = res['COUNTRY_NAME'].strip
       if tops.include?(name) then
         countries.unshift([res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']])
       else
