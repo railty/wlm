@@ -54,18 +54,18 @@ class Item < ActiveRecord::Base
   def self.countries
     tops = ['Canada', 'United States', 'China', 'Mexico', 'Costa Rica', 'Peru', 'Guatemala', 'Taiwan', 'Korea, South', 'Jamaica']
     countries = []
+    top_countries = []
     sql = "SELECT COUNTRY_CODE, COUNTRY_NAME, OFFICIAL_NAME FROM CountryCode Order by COUNTRY_NAME"
     results = ActiveRecord::Base.connection.select_all(sql)
     results.each do |res|
       name = res['COUNTRY_NAME'].strip
       if tops.include?(name) then
-        countries.unshift([res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']])
+        top_countries << [res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']]
       else
         countries << [res['COUNTRY_CODE'], name, res['OFFICIAL_NAME']]
       end
-
     end
-    return countries
+    return top_countries + [['-', '-', '-']] + countries
   end
 
 end

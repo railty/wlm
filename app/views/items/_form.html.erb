@@ -21,7 +21,9 @@
       <td>
         <%= f.select(:origin, [], {}, {class: "form-control"}) do %>
           <% Item.countries.each do |c| -%>
-            <% if c[0]==@item.origin then %>
+            <% if c[0]=='-' then %>
+              <%= content_tag(:option, c[1], value: c[0], title: c[2], disabled: 'disabled') %>
+            <% elsif c[0]==@item.origin then %>
               <%= content_tag(:option, c[1], value: c[0], title: c[2], selected: 'selected') %>
             <% else %>
               <%= content_tag(:option, c[1], value: c[0], title: c[2]) %>
