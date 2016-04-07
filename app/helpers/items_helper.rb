@@ -57,8 +57,8 @@ module ItemsHelper
       <td>#{item.signing_desc}</td>
       <td>#{item.vendor_stk_nbr}</td>
       <td>#{item.products_store==nil ? '' : item.products_store.Prod_Alias}</td>
-      <td>#{item.wm_item.Item_Status}</td>
-      <td>#{item.wm_item.Item_Type}</td>
+      <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Status}</td>
+      <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Type}</td>
       <td>#{link_to "Print",  print_item_path(item)}</td>
     </tr>".html_safe
   end
