@@ -34,7 +34,7 @@ module ItemsHelper
   def display_row(item)
     return Rails.application.config.site == "hq" ? "
     <tr>
-      <td>#{item.id}</td>
+      <td>#{link_to item.id, edit_item_path(item)}</td>      
       <td>#{item.upc}</td>
       <td>#{number_to_currency(item.price_ceiling)}</td>
       <td>#{number_to_currency(item.unit_cost || 0)}</td>

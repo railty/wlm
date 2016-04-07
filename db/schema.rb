@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228190048) do
+ActiveRecord::Schema.define(version: 20160406132744) do
+
+  create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
+    t.varchar "COUNTRY_NAME",  limit: 32
+    t.varchar "OFFICIAL_NAME", limit: 64
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string   "name",       limit: 32
@@ -102,28 +107,30 @@ ActiveRecord::Schema.define(version: 20160228190048) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "wm_items", primary_key: "Item_Nbr", force: :cascade do |t|
-    t.integer "Acct_Dept_Nbr",        limit: 4
-    t.string  "Dept_Desc",            limit: 4000
-    t.string  "UPC",                  limit: 13
-    t.string  "VNPK_UPC",             limit: 13
-    t.decimal "Unit_Retail",                       precision: 6,  scale: 2
-    t.decimal "Unit_Cost",                         precision: 6,  scale: 2
-    t.decimal "Unit_Size",                         precision: 18, scale: 0
-    t.string  "Unit_Size_UOM",        limit: 4000
-    t.string  "Signing_Desc",         limit: 4000
-    t.decimal "VNPK_Qty",                          precision: 18, scale: 0
-    t.string  "Item_Flags",           limit: 4000
-    t.string  "Item_Desc_1",          limit: 4000
-    t.string  "Vendor_Stk_Nbr",       limit: 4000
-    t.string  "Size_Desc",            limit: 4000
-    t.integer "Fineline_Number",      limit: 4
-    t.string  "Fineline_Description", limit: 4000
-    t.decimal "VNPK_Cost",                         precision: 6,  scale: 2
-    t.string  "Item_Status",          limit: 4000
-    t.string  "Item_Type",            limit: 4000
-    t.date    "Effective_Date"
-    t.date    "Create_Date"
-    t.string  "Source",               limit: 4000
+    t.integer  "Acct_Dept_Nbr",        limit: 4
+    t.string   "Dept_Desc",            limit: 4000
+    t.string   "UPC",                  limit: 13
+    t.string   "VNPK_UPC",             limit: 13
+    t.decimal  "Unit_Retail",                       precision: 6,  scale: 2
+    t.decimal  "Unit_Cost",                         precision: 6,  scale: 2
+    t.decimal  "Unit_Size",                         precision: 18, scale: 0
+    t.string   "Unit_Size_UOM",        limit: 4000
+    t.string   "Signing_Desc",         limit: 4000
+    t.decimal  "VNPK_Qty",                          precision: 18, scale: 0
+    t.string   "Item_Flags",           limit: 4000
+    t.string   "Item_Desc_1",          limit: 4000
+    t.string   "Vendor_Stk_Nbr",       limit: 4000
+    t.string   "Size_Desc",            limit: 4000
+    t.integer  "Fineline_Number",      limit: 4
+    t.string   "Fineline_Description", limit: 4000
+    t.decimal  "VNPK_Cost",                         precision: 6,  scale: 2
+    t.string   "Item_Status",          limit: 4000
+    t.string   "Item_Type",            limit: 4000
+    t.date     "Effective_Date"
+    t.date     "Create_Date"
+    t.string   "Source",               limit: 4000
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

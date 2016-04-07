@@ -1,11 +1,3 @@
-def table_for(collection, *args)
-  puts collection
-  debugger
-  puts collection
-end
-
-table_for("one")
-table_for("one", "two")
-table_for "one", "two", "three"
-table_for("one", "two", "three")
-table_for("one", ["two", "three"])
+rc = ActiveRecord::Base.connection.execute_procedure('dbo.test')
+result = rc[-1]==Array ? rc[-1][0]['output'] : rc[-1]['output']
+puts result

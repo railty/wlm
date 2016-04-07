@@ -50,34 +50,33 @@
     </tr>
   </table>
 
-  <table class='table table-striped table-condensed' style="width:600px">
-    <tr>
-      <th>Type</th>
-      <th>Image</th>
-      <th>Delete</th>
-    </tr>
-    <!--
-    <%= f.fields_for :photos do |photo| %>
+  <% if Rails.application.config.site == "hq" %>
+    <table class='table table-striped table-condensed' style="width:600px">
       <tr>
-        <td>
-          <label class="radio-inline">
-            <%checked = photo.object.photo_type == 'Primary' ? 'checked' : '' %>
-            <input type="radio" name="radioPrimary" value="<%=photo.object.id%>" <%=checked%> >
-            Primary
-          </label>
-          <%= photo.hidden_field :photo_type, :class=>'photo_type' %>
-        </td>
-        <td><%= image_tag photo.object.image.url(:thumb) %></td>
-        <td><%= link_to 'Destroy', item_photo_path(@item, photo.object), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <th>Type</th>
+        <th>Image</th>
+        <th>Delete</th>
       </tr>
-    <% end %>
-    -->
-  </table>
+      <%= f.fields_for :photos do |photo| %>
+        <tr>
+          <td>
+            <label class="radio-inline">
+              <%checked = photo.object.photo_type == 'Primary' ? 'checked' : '' %>
+              <input type="radio" name="radioPrimary" value="<%=photo.object.id%>" <%=checked%> >
+              Primary
+            </label>
+            <%= photo.hidden_field :photo_type, :class=>'photo_type' %>
+          </td>
+          <td><%= image_tag photo.object.image.url(:thumb) %></td>
+          <td><%= link_to 'Destroy', item_photo_path(@item, photo.object), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>  
   <%= f.submit :class=>"btn btn-primary" %>
 <% end %>
 
 <br/>
-<!--
 
 <%= form_for(@item) do |f| %>
   <%= f.fields_for :photos, @item.photos.build do |photo| %>
@@ -96,4 +95,3 @@
   </table>
   <%= f.submit 'Upload', :class=>"btn btn-primary" %>
 <% end %>
--->
