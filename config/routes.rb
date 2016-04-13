@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :jobs do
     collection do
       post 'upload_excel'
