@@ -1,0 +1,131 @@
+<h1>Report</h1>
+<div class='summary'>
+  This report list <b>ALP</b> products
+  <ul>
+    <li>received in last week (2016/04/11 to 2016/04/17)</li>
+    <li>also received at least once earlier this year(2016/01/01 to 2016/04/11)</li>
+    <li>received price increased at lease <b>5%</b></li>
+    <li>POS price <b>did not change</b> or even <b>lower</b></li>
+  </ul>
+  Example:
+  <table class='table table-condensed'>
+    <tr>
+      <th>ProdNum</th>
+      <th>Name</th>
+      <th>Received</th>
+      <th>POS</th>
+    </tr>
+    <tr>
+      <td class="prodnum">860010315628</td>
+      <td class="name">
+        <table class="pair">
+          <tbody><tr><td>Polo Cacak Dzem Od Sljiva</td></tr>
+          <tr><td></td></tr>
+        </tbody></table>
+      </td>
+      <td class="received">
+        <table class="quarter">
+          <tbody><tr>
+            <td>
+              <table class="quarter">
+                <tbody><tr><td class="date">04/11</td></tr>
+                <tr><td class="price">$4.00</td></tr>
+              </tbody></table>
+            </td>
+            <td>
+              <table class="quarter">
+                <tbody><tr><td class="date">03/17</td></tr>
+                <tr><td class="price">$3.00</td></tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+
+      <td class="pos">
+        <table class="quarter">
+          <tbody><tr>
+            <td>
+              <table class="quarter">
+                <tbody><tr><td class="date">04/12</td></tr>
+                <tr><td class="price">$5.29</td></tr>
+              </tbody></table>
+            </td>
+            <td>
+              <table class="quarter">
+                <tbody><tr><td class="date">03/21</td></tr>
+                <tr><td class="price">$6.25</td></tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
+  Explanation:
+  <p>Product 860010315628 (Polo Cacak Dzem Od Sljiva) no chinese name available, was received 2016/03/17 at price $3.00 and 2016/04/11 at price $4.00, it increased over 5%</p>
+  <p>The POS price reduced from $6.25 to $5.29 at 2016/04/12</p>
+  <p>Please note 2016/03/21 is the start date of POS price history, 03/21 means the price was $6.25 before 2016/03/21</p>
+</div>
+
+<%@records.each do |k, rs|%>
+  <h3><%=k%></h3>
+  <table class='table table-striped table-condensed'>
+    <tr>
+      <th>ProdNum</th>
+      <th>Name</th>
+      <th>Received</th>
+      <th>POS</th>
+    </tr>
+
+    <%rs.each do |r|%>
+    <tr>
+      <td class='prodnum'><%=r['ProdNum']%></td>
+      <td class='name'>
+        <table class='pair'>
+          <tr><td><%=r['Name']%></td></tr>
+          <tr><td><%=r['Alias']%></td></tr>
+        </table>
+      </td>
+      <td class='received'>
+        <table class='quarter'>
+          <tr>
+            <td>
+              <table class='quarter'>
+                <tr><td class='date'><%=r['ReceivedDt']%></td></tr>
+                <tr><td class='price'><%=number_to_currency(r['ReceivedPrice'])%></td></tr>
+              </table>
+            </td>
+            <td>
+              <table class='quarter'>
+                <tr><td class='date'><%=r['LastReceivedDt']%></td></tr>
+                <tr><td class='price'><%=number_to_currency(r['LastReceivedPrice'])%></td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <td class='pos'>
+        <table class='quarter'>
+          <tr>
+            <td>
+              <table class='quarter'>
+                <tr><td class='date'><%=r['Dt']%></td></tr>
+                <tr><td class='price'><%=number_to_currency(r['PosPrice'])%></td></tr>
+              </table>
+            </td>
+            <td>
+              <table class='quarter'>
+                <tr><td class='date'><%=r['LastDt']%></td></tr>
+                <tr><td class='price'><%=number_to_currency(r['LastPosPrice'])%></td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+    <%end%>
+  </table>
+<%end%>

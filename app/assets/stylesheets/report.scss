@@ -1,0 +1,48 @@
+div.summary {
+  background-color: lightblue !important;
+  border: solid 1px black;
+}
+
+td.prodnum {
+  max-width: 2.5cm;
+  width: 2.5cm;
+}
+
+td.name {
+  max-width: 8cm;
+  width: 8cm;
+}
+
+$quarter-width: 3cm;
+
+td.received {
+  max-width: $quarter-width;
+  width: $quarter-width;
+}
+
+td.pos {
+  max-width: $quarter-width;
+  width: $quarter-width;
+}
+
+.pair {
+  border: solid 0px black;
+  td {
+  }
+}
+
+table.quarter {
+  border: solid 1px black;
+  td.date {
+    text-align: center;
+    background-color: cyan !important;
+    padding-left: 1mm;
+    padding-right: 1mm;
+  }
+  td.price {
+    text-align: center;
+    background-color: lightcyan !important;
+    padding-left: 1mm;
+    padding-right: 1mm;
+  }
+}
