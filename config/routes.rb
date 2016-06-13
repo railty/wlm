@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stores
+  resources :alp_items
   resources :products
   resources :jobs do
     collection do

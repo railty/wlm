@@ -18,10 +18,21 @@ def run_sql_file(sql_file)
   end
 end
 
-User.delete_all
-User.new({:email => "zxning@gmail.com", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
-User.new({:email => "smile.shi@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
-User.new({:email => "jacky.yu@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
+def step1
+  User.delete_all
+  User.new({:email => "zxning@gmail.com", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
+  User.new({:email => "smile.shi@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
+  User.new({:email => "jacky.yu@alpremium.ca", :role => "admin", :password => "123456", :password_confirmation => "123456" }).save!
 
-run_sql_file('db/country_code.sql')
-run_sql_file('db/items_label.sql')
+  run_sql_file('db/country_code.sql')
+  run_sql_file('db/items_label.sql')
+end
+
+def step2
+  Store.new({:name => "ALP", :num => 39}).save!
+  Store.new({:name => "OFC", :num => 2}).save!
+  Store.new({:name => "OHS", :num => 4}).save!
+  Store.new({:name => "OFMM", :num => 7}).save!
+end
+
+step2

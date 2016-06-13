@@ -11,11 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406132744) do
+ActiveRecord::Schema.define(version: 20160608161918) do
 
   create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
     t.varchar "COUNTRY_NAME",  limit: 32
     t.varchar "OFFICIAL_NAME", limit: 64
+  end
+
+  create_table "alp_items", force: :cascade do |t|
+    t.integer  "store_id",     limit: 4
+    t.string   "code",         limit: 4000
+    t.string   "name",         limit: 4000
+    t.string   "alias",        limit: 4000
+    t.string   "description",  limit: 4000
+    t.string   "package_spec", limit: 4000
+    t.string   "department",   limit: 4000
+    t.decimal  "price",                     precision: 6, scale: 2
+    t.decimal  "sale_price",                precision: 6, scale: 2
+    t.boolean  "onsale",                                            default: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
   end
 
   create_table "departments", force: :cascade do |t|
@@ -86,6 +101,13 @@ ActiveRecord::Schema.define(version: 20160406132744) do
     t.string  "Prod_Alias",  limit: 40
     t.decimal "RegPrice",               precision: 6, scale: 2
     t.decimal "OnSalePrice",            precision: 6, scale: 2
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "name",       limit: 4000
+    t.integer  "num",        limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
