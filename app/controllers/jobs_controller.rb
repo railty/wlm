@@ -88,6 +88,22 @@ class JobsController < ApplicationController
     end
   end
 
+  def pull_alp_items
+    stores = []
+    ['ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
+      stores << store if params[store] != nil
+    end
+    respond_to do |format|
+     if Job.pull_alp_items(stores) then
+       format.html { redirect_to jobs_url, notice: 'pull alp items was successfully scheduled.' }
+       format.json { head :no_content }
+     else
+       format.html { redirect_to jobs_url, notice: 'Error pull alp items.' }
+       format.json { head :no_content }
+     end
+    end
+  end
+
   def delete_wm_items
     respond_to do |format|
      if Job.delete_wm_items() then

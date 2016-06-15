@@ -7,6 +7,12 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
+
+  <%= form_tag({controller: :jobs, action: :pull_alp_items}, {:class => 'navbar-form navbar-right'}) do %>
+    <%= check_stores %>
+    <%= submit_tag("Pull", :class=>"btn btn-primary") %>
+  <% end %>
+
 </ul>
 
 <h1>ALP Items(<%=@count%>)</h1>

@@ -26,4 +26,12 @@ module AlpItemsHelper
     </tr>".html_safe
   end
 
+  def check_stores
+    str = ''
+    ['ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
+      str = str + "<div class='checkbox'><label><input type='checkbox' id='#{store}' name='#{store}' value='' checked>#{store}</label></div>"
+    end
+    return str.html_safe
+  end
+
 end

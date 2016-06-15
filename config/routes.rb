@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'push_items'
       get 'delete_wm_items'
       get 'download_stores_products'
+      post 'pull_alp_items'
     end
     member do
       get 'download'

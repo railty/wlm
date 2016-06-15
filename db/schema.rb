@@ -69,6 +69,30 @@ ActiveRecord::Schema.define(version: 20160608161918) do
     t.string   "grade",                  limit: 4000
   end
 
+  create_table "items_label", id: false, force: :cascade do |t|
+    t.string  "UPC_GTIN",                limit: 13, null: false
+    t.string  "Item_Description_1",      limit: 20
+    t.string  "Shelf_1___Color",         limit: 6
+    t.string  "Shelf_2___Size",          limit: 6
+    t.string  "Unit_Size_UOM",           limit: 10
+    t.string  "Unit_Size_Sell_Qty",      limit: 10
+    t.string  "Plu_Number",              limit: 5
+    t.float   "Base_Unit_Retail"
+    t.integer "Department",              limit: 2
+    t.char    "Country_of_Origin",       limit: 2
+    t.string  "Retail_Unit_Measurement", limit: 10
+    t.varchar "Country_of_Origin_Name",  limit: 32
+    t.string  "Converted_Price",         limit: 10
+    t.string  "Unit_Price",              limit: 32
+    t.varchar "Price_Per_LB",            limit: 20
+    t.string  "Department_Name",         limit: 32
+    t.string  "Misc_1",                  limit: 32
+    t.string  "Misc_2",                  limit: 32
+    t.string  "Misc_3",                  limit: 32
+    t.string  "Misc_4",                  limit: 32
+    t.string  "Grade",                   limit: 32
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "name",         limit: 4000
     t.string   "job_type",     limit: 4000

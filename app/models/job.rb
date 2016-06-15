@@ -135,6 +135,22 @@ class Job < ActiveRecord::Base
     return jobs
   end
 
+  def self.pull_alp_items(stores)
+    jobs = []
+    stores.each do |store|
+      job = Job.new
+      job.save
+      job.name = "Pull #{store} items"
+      job.input = "dbo.pull_alp_items store=#{store}"
+      job.job_type = 'tsql_sp'
+      job.save
+      job.enqueue
+      jobs << job
+    end
+    return jobs
+  end
+
+
   def self.download_stores_products
     job = Job.new
     job.save
