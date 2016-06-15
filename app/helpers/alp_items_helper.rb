@@ -9,6 +9,7 @@ module AlpItemsHelper
       <th>Description</th>
       <th>Price</th>
       <th>Sale Price</th>
+      <th>updated_at</th>
     </tr>'.html_safe
   end
 
@@ -25,6 +26,7 @@ module AlpItemsHelper
       <td>#{item.description}</td>
       <td style='background-color:#{p}'>#{item.price}</td>
       <td style='background-color:#{sp}'>#{item.sale_price}</td>
+      <td>#{item.updated_at}</td>
     </tr>".html_safe
   end
 
