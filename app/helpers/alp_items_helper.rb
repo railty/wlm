@@ -2,6 +2,7 @@ module AlpItemsHelper
   def display_header
     return '
     <tr>
+      <th>Store</th>
       <th>Code</th>
       <th>Name</th>
       <th>中文</th>
@@ -17,7 +18,8 @@ module AlpItemsHelper
 
     return "
     <tr>
-      <td>#{link_to item.code, edit_alp_item_path(item)}</td>
+      <td>#{item.store.name}</td>
+      <td>#{item.code}</td>
       <td>#{item.name}</td>
       <td>#{item.alias}</td>
       <td>#{item.description}</td>
