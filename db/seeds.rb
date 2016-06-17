@@ -29,10 +29,10 @@ def step1
 end
 
 def step2
-  Store.new({:name => "ALP", :num => 39}).save!
-  Store.new({:name => "OFC", :num => 2}).save!
-  Store.new({:name => "OHS", :num => 4}).save!
-  Store.new({:name => "OFMM", :num => 7}).save!
+  Store.new({:name => "ALP", :id => 39, :num => 39}).save!
+  Store.new({:name => "OFC", :id => 39, :num => 2}).save!
+  Store.new({:name => "OHS", :id => 39, :num => 4}).save!
+  Store.new({:name => "OFMM", :id => 39, :num => 7}).save!
 end
 
 step2
