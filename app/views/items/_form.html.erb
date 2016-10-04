@@ -72,26 +72,25 @@
         </tr>
       <% end %>
     </table>
-  <% end %>  
-  <%= f.submit :class=>"btn btn-primary" %>
-<% end %>
-
-<br/>
-
-<%= form_for(@item) do |f| %>
-  <%= f.fields_for :photos, @item.photos.build do |photo| %>
-    <tr>
-      <td><%= photo.text_field :photo_type %></td>
-      <td>
-        <label class="btn btn-primary" for="item_photos_attributes_<%=photo.index%>_image">
-          <%= photo.file_field :image, :style=>'display:none;', :onchange=>'fileSelected(this)' %>
-          Choose the Photo
-        </label>
-        <span id="upload-file-info"></span>
-      </td>
-      <td><img id="imgPreview" style="width: 100px;"/></td>
-    </tr>
   <% end %>
-  </table>
-  <%= f.submit 'Upload', :class=>"btn btn-primary" %>
+  <%= f.submit :class=>"btn btn-primary" %>
+  <br/>
+  <%= form_for(@item) do |f| %>
+    <%= f.fields_for :photos, @item.photos.build do |photo| %>
+      <tr>
+        <td><%= photo.text_field :photo_type %></td>
+        <td>
+          <label class="btn btn-primary" for="item_photos_attributes_<%=photo.index%>_image">
+            <%= photo.file_field :image, :style=>'display:none;', :onchange=>'fileSelected(this)' %>
+            Choose the Photo
+          </label>
+          <span id="upload-file-info"></span>
+        </td>
+        <td><img id="imgPreview" style="width: 100px;"/></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= f.submit 'Upload', :class=>"btn btn-primary" %>
+  <% end %>
+
 <% end %>
