@@ -74,7 +74,7 @@ class JobsController < ApplicationController
 
   def push_items
     stores = []
-    ['HQSVR2', 'WM1080', 'ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
+    ['HQSVR2', 'WM3652', 'WM1080', 'ALP', 'OFMM', 'OFC', 'OHS'].each do |store|
       stores << store if params[store] != nil
     end
     respond_to do |format|
