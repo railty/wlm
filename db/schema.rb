@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608161918) do
+ActiveRecord::Schema.define(version: 20160617160426) do
 
   create_table "CountryCode", primary_key: "COUNTRY_CODE", force: :cascade do |t|
     t.varchar "COUNTRY_NAME",  limit: 32
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160608161918) do
     t.boolean  "onsale",                                            default: false
     t.datetime "created_at",                                                        null: false
     t.datetime "updated_at",                                                        null: false
+    t.datetime "changed_at"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -67,30 +68,6 @@ ActiveRecord::Schema.define(version: 20160608161918) do
     t.decimal  "vnpk_cost",                           precision: 6,  scale: 2
     t.string   "owner",                  limit: 4000
     t.string   "grade",                  limit: 4000
-  end
-
-  create_table "items_label", id: false, force: :cascade do |t|
-    t.string  "UPC_GTIN",                limit: 13, null: false
-    t.string  "Item_Description_1",      limit: 20
-    t.string  "Shelf_1___Color",         limit: 6
-    t.string  "Shelf_2___Size",          limit: 6
-    t.string  "Unit_Size_UOM",           limit: 10
-    t.string  "Unit_Size_Sell_Qty",      limit: 10
-    t.string  "Plu_Number",              limit: 5
-    t.float   "Base_Unit_Retail"
-    t.integer "Department",              limit: 2
-    t.char    "Country_of_Origin",       limit: 2
-    t.string  "Retail_Unit_Measurement", limit: 10
-    t.varchar "Country_of_Origin_Name",  limit: 32
-    t.string  "Converted_Price",         limit: 10
-    t.string  "Unit_Price",              limit: 32
-    t.varchar "Price_Per_LB",            limit: 20
-    t.string  "Department_Name",         limit: 32
-    t.string  "Misc_1",                  limit: 32
-    t.string  "Misc_2",                  limit: 32
-    t.string  "Misc_3",                  limit: 32
-    t.string  "Misc_4",                  limit: 32
-    t.string  "Grade",                   limit: 32
   end
 
   create_table "jobs", force: :cascade do |t|
