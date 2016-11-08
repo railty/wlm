@@ -48,6 +48,10 @@
       <td><%= f.label(:proposed_price_ceiling) %></td>
       <td><%= f.text_field(:proposed_price_ceiling) %></td>
     </tr>
+    <tr>
+      <td><%= f.label('中文') %></td>
+      <td><%= f.text_field(:alias) %></td>
+    </tr>
   </table>
 
   <% if Rails.application.config.site == "hq" %>

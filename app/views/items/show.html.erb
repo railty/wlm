@@ -18,10 +18,16 @@
     <td>Proposed Price</td>
     <td><%= number_to_currency(@item.proposed_price) %></td>
   </tr>
+  <tr>
+    <td>中文</td>
+    <td><%= @item.alias %></td>
+  </tr>
 </table>
 
-<%@item.photos.each do |photo|%>
-  <%= image_tag photo.image.url(:thumb) %>
+<% if Rails.application.config.site == "hq" %>
+  <%@item.photos.each do |photo|%>
+    <%= image_tag photo.image.url(:thumb) %>
+  <%end%>
 <%end%>
 
 <%=link_to 'Edit', edit_item_path(@item), :class=>"btn btn-primary", :role=>"button"%>

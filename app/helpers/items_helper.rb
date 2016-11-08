@@ -34,14 +34,14 @@ module ItemsHelper
   def display_row(item)
     return Rails.application.config.site == "hq" ? "
     <tr>
-      <td>#{link_to item.id, edit_item_path(item)}</td>      
+      <td>#{link_to item.id, edit_item_path(item)}</td>
       <td>#{item.upc}</td>
       <td>#{number_to_currency(item.price_ceiling)}</td>
       <td>#{number_to_currency(item.unit_cost || 0)}</td>
       <td>#{item.unit_size_uom}</td>
       <td>#{item.signing_desc}</td>
       <td>#{item.vendor_stk_nbr}</td>
-      <td>#{item.products_store==nil ? '' : item.products_store.Prod_Alias}</td>
+      <td>#{item.alias}</td>
       <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Status}</td>
       <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Type}</td>
     </tr>".html_safe : "
@@ -56,7 +56,7 @@ module ItemsHelper
       <td>#{item.unit_size_uom}</td>
       <td>#{item.signing_desc}</td>
       <td>#{item.vendor_stk_nbr}</td>
-      <td>#{item.products_store==nil ? '' : item.products_store.Prod_Alias}</td>
+      <td>#{link_to item.alias == nil ? '_' : item.alias, edit_item_path(item)}</td>
       <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Status}</td>
       <td>#{item.wm_item==nil ? '' : item.wm_item.Item_Type}</td>
       <td>#{link_to "Print",  print_item_path(item)}</td>

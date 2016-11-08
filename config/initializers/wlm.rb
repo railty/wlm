@@ -1,2 +1,2 @@
-Rails.application.config.site = 'hq'
-#Rails.application.config.site = 'store'
+#Rails.application.config.site = 'hq'
+Rails.application.config.site = 'store'
