@@ -18,6 +18,12 @@ class Job < ActiveRecord::Base
     elsif originalExcelFileName =~ /Pricing Guide/i then
       job.name = 'Create Pricing Guide'
       job.job_type = 'pricing_guide'
+    elsif originalExcelFileName =~ /Store (\d+) Sales (.*) Dept (.*)\.xlsx/i then
+      store = $1
+      dt = $2
+      dept = $3
+      job.name = 'Import Sales Report'
+      job.job_type = 'sales_report'
     else
       job.job_type = 'unknown excel'
     end
