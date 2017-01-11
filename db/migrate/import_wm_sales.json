@@ -1,0 +1,23 @@
+{
+  "Item Nbr" : {
+    "table": "POS_Sales",
+    "field": "Product_ID",
+    "description": "",
+    "datatype": "integer",
+    "options": ""
+  },
+  "POS Sales" : {
+    "table": "POS_Sales",
+    "field": "Amount",
+    "description": "",
+    "datatype": "decimal",
+    "options": ""
+  },
+  "POS Qty" : {
+    "table": "POS_Sales",
+    "field": "Quantity",
+    "description": "",
+    "datatype": "decimal",
+    "options": ""
+  }
+}

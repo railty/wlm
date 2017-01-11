@@ -41,7 +41,7 @@ SAL_ENABLE_FILE_LOCKING=0
 
 #rabbitmq
 sudo bash -c 'echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list'
-curl http://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sudo apt-key add -
+curl http://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
 apt-get update
 sudo apt-get install rabbitmq-server
 sudo rabbitmq-plugins enable rabbitmq_management

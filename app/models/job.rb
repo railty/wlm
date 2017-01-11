@@ -70,6 +70,21 @@ class Job < ActiveRecord::Base
         self.stderr = stderr.read
       end
       return output
+    elsif self.job_type == 'sales_report' then
+      excelFile = self.input
+      data = excelToAoA(excelFile)
+      title = data['sheet'][0][1]
+      if title =~ /(\d+) sales (\w+) (\d+) - (\d+) (\d+)/ then
+        store = $1
+        date = $2 + ' ' + $3 + ' ' + $5
+        mapping = JSON.parse(File.read("db/migrate/import_wm_sales.json"))
+        sales = translate(data, mapping)
+        sales.each do |sale|
+          sql = "insert into POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
+          puts sql
+          rc = ActiveRecord::Base.connection.execute(sql)
+        end
+      end
     elsif self.job_type == 'tsql_sp' then
       sp_name, *sp_args = self.input.split(' ')
       args = {}
