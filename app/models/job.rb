@@ -80,8 +80,9 @@ class Job < ActiveRecord::Base
         mapping = JSON.parse(File.read("db/migrate/import_wm_sales.json"))
         sales = translate(data, mapping)
         sales.each do |sale|
-          sql = "insert into POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
-          puts sql
+          sql = "delete from wm#{store}.dbo.POS_Sales where Date = '#{date}' and Product_ID = #{sale['Product_ID']}"
+          rc = ActiveRecord::Base.connection.execute(sql)
+          sql = "insert into wm#{store}.dbo.POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
           rc = ActiveRecord::Base.connection.execute(sql)
         end
       end
