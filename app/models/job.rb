@@ -118,10 +118,10 @@ class Job < ActiveRecord::Base
             quantity = sale["Quantity_#{i}"]
             amount = sale["Amount_#{i}"]
 
-            sql = "delete from Pris.dbo.wm#{store}_POS_Sales where Date = '#{dt}' and Product_ID = #{sale['Product_ID']}"
+            sql = "delete from HQSVR2.Pris.dbo.wm#{store}_POS_Sales where Date = '#{dt}' and Product_ID = #{sale['Product_ID']}"
             rc = ActiveRecord::Base.connection.execute(sql)
 
-            sql = "insert into Pris.dbo.wm#{store}_POS_Sales(Date, Product_ID, Quantity, Amount) values('#{dt}', #{sale['Product_ID']}, #{quantity}, #{amount})"
+            sql = "insert into HQSVR2.Pris.dbo.wm#{store}_POS_Sales(Date, Product_ID, Quantity, Amount) values('#{dt}', #{sale['Product_ID']}, #{quantity}, #{amount})"
             #puts sql
             rc = ActiveRecord::Base.connection.execute(sql)
           end
