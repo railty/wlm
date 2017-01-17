@@ -18,12 +18,20 @@ class Job < ActiveRecord::Base
     elsif originalExcelFileName =~ /Pricing Guide/i then
       job.name = 'Create Pricing Guide'
       job.job_type = 'pricing_guide'
-    elsif originalExcelFileName =~ /Store (\d+) Sales (.*) Dept (.*)\.xlsx/i then
+    #elsif originalExcelFileName =~ /Store (\d+) Sales (.*) Dept (.*)\.xlsx/i then
+    #  store = $1
+    #  dt = $2
+    #  dept = $3
+    #  job.name = 'Import Sales Report'
+    #  job.job_type = 'weekly_sales_report'
+  elsif originalExcelFileName =~ /Store (\d+) Sales (\w+) (\d+)\s*-\s*(\d+) (\d+) Dept (.*)\.xlsx/i then
       store = $1
-      dt = $2
-      dept = $3
-      job.name = 'Import Sales Report'
-      job.job_type = 'sales_report'
+      dept = $6
+      dt = "#{$2} #{$3} #{$5}"
+      dt = Date.parse(dt).strftime("%Y-%m-%d")
+
+      job.name = "Import Daily Sales Report #{store} #{dt}"
+      job.job_type = 'daily_sales_report'
     else
       job.job_type = 'unknown excel'
     end
@@ -70,21 +78,55 @@ class Job < ActiveRecord::Base
         self.stderr = stderr.read
       end
       return output
-    elsif self.job_type == 'sales_report' then
+    elsif self.job_type == 'weekly_sales_report' then
       excelFile = self.input
       data = excelToAoA(excelFile)
       title = data['sheet'][0][1]
       if title =~ /(\d+) sales (\w+) (\d+) - (\d+) (\d+)/ then
         store = $1
         date = $2 + ' ' + $3 + ' ' + $5
-        mapping = JSON.parse(File.read("db/migrate/import_wm_sales.json"))
+        mapping = JSON.parse(File.read("db/migrate/import_wm_sales_weekly.json"))
         sales = translate(data, mapping)
         sales.each do |sale|
-          sql = "delete from wm#{store}.dbo.POS_Sales where Date = '#{date}' and Product_ID = #{sale['Product_ID']}"
-          rc = ActiveRecord::Base.connection.execute(sql)
-          sql = "insert into wm#{store}.dbo.POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
+          sql = "insert into POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
+          #puts sql
           rc = ActiveRecord::Base.connection.execute(sql)
         end
+      end
+    elsif self.job_type == 'daily_sales_report' then
+      excelFile = self.input
+      data = excelToAoA(excelFile)
+      title = self.name
+      if title =~ /Import Daily Sales Report (\d+) ([\d-]+)/ then
+        store = $1
+        date = Date.parse($2)
+
+        mapping_base = JSON.parse(File.read("db/migrate/import_wm_sales_daily.json"))
+        mapping = {'Item Nbr' => mapping_base["Item Nbr"].clone}
+        (0 .. 6).each do |i|
+          dt = (date + i.day).strftime('%Y/%m/%d')
+          mapping["#{dt} POS Sales"] = mapping_base["POS Sales"].clone
+          mapping["#{dt} POS Sales"]['field'] = mapping["#{dt} POS Sales"]['field'] + "_#{i}"
+          mapping["#{dt} POS Qty"] = mapping_base["POS Qty"].clone
+          mapping["#{dt} POS Qty"]['field'] = mapping["#{dt} POS Qty"]['field'] + "_#{i}"
+        end
+        sales = translate(data, mapping)
+        sales.each do |sale|
+          next if sale['Product_ID'] == nil or sale['Product_ID'] == 0
+          (0 .. 6).each do |i|
+            dt = date + i.day
+            quantity = sale["Quantity_#{i}"]
+            amount = sale["Amount_#{i}"]
+
+            sql = "delete from Pris.dbo.wm#{store}_POS_Sales where Date = '#{dt}' and Product_ID = #{sale['Product_ID']}"
+            rc = ActiveRecord::Base.connection.execute(sql)
+
+            sql = "insert into Pris.dbo.wm#{store}_POS_Sales(Date, Product_ID, Quantity, Amount) values('#{dt}', #{sale['Product_ID']}, #{quantity}, #{amount})"
+            #puts sql
+            rc = ActiveRecord::Base.connection.execute(sql)
+          end
+        end
+        return "sales records: #{sales.length}"
       end
     elsif self.job_type == 'tsql_sp' then
       sp_name, *sp_args = self.input.split(' ')
