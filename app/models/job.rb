@@ -18,13 +18,13 @@ class Job < ActiveRecord::Base
     elsif originalExcelFileName =~ /Pricing Guide/i then
       job.name = 'Create Pricing Guide'
       job.job_type = 'pricing_guide'
-    #elsif originalExcelFileName =~ /Store (\d+) Sales (.*) Dept (.*)\.xlsx/i then
-    #  store = $1
-    #  dt = $2
-    #  dept = $3
-    #  job.name = 'Import Sales Report'
-    #  job.job_type = 'weekly_sales_report'
-  elsif originalExcelFileName =~ /Store (\d+) Sales (\w+) (\d+)\s*-\s*(\d+) (\d+) Dept (.*)\.xlsx/i then
+    elsif originalExcelFileName =~ /Weekly Store (\d+) Sales (\w+) (\d+)\s*-\s*(\d+) (\d+) Dept (.*)\.xlsx/i then
+      store = $1
+      dt = "#{$2} #{$3} #{$5}"
+      dt = Date.parse(dt).strftime("%Y-%m-%d")
+      job.name = "Import Weekly Sales Report #{store} #{dt}"
+      job.job_type = 'weekly_sales_report'
+    elsif originalExcelFileName =~ /Store (\d+) Sales (\w+) (\d+)\s*-\s*(\d+) (\d+) Dept (.*)\.xlsx/i then
       store = $1
       dept = $6
       dt = "#{$2} #{$3} #{$5}"
@@ -81,17 +81,22 @@ class Job < ActiveRecord::Base
     elsif self.job_type == 'weekly_sales_report' then
       excelFile = self.input
       data = excelToAoA(excelFile)
-      title = data['sheet'][0][1]
-      if title =~ /(\d+) sales (\w+) (\d+) - (\d+) (\d+)/ then
+      title = self.name
+      if title =~ /Import Weekly Sales Report (\w+) ([\d-]+)/ then
         store = $1
-        date = $2 + ' ' + $3 + ' ' + $5
+        dt = Date.parse($2)
         mapping = JSON.parse(File.read("db/migrate/import_wm_sales_weekly.json"))
         sales = translate(data, mapping)
         sales.each do |sale|
-          sql = "insert into POS_Sales(Date, Product_ID, Quantity, Amount) values('#{date}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
-          #puts sql
+          sql = "delete from HQSVR2.Pris.dbo.wm#{store}_POS_Sales where Date = '#{dt}' and Product_ID = #{sale['Product_ID']}"
+          rc = ActiveRecord::Base.connection.execute(sql)
+
+          sql = "insert into HQSVR2.Pris.dbo.wm#{store}_POS_Sales(Date, Product_ID, Quantity, Amount) values('#{dt}', #{sale['Product_ID']}, #{sale['Quantity']}, #{sale['Amount']})"
+          puts sql
           rc = ActiveRecord::Base.connection.execute(sql)
         end
+        return "sales records: #{sales.length}"
+
       end
     elsif self.job_type == 'daily_sales_report' then
       excelFile = self.input
