@@ -43,6 +43,7 @@ gem 'sneakers'
 gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap'
 
+gem 'mimemagic', git: 'https://github.com/mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 gem "paperclip"
 
 group :development, :test do
