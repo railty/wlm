@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '~>4.2.5'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'tiny_tds'
@@ -44,6 +44,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap'
 
 gem 'mimemagic', git: 'https://github.com/mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'bigdecimal', '1.4.4'
 gem "paperclip"
 
 group :development, :test do
