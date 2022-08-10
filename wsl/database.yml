@@ -10,6 +10,7 @@ wlm: &wlm
   database: Pris
   username: 
   password: 
+  tds_version: 70
 
 development:
   <<: *wlm
