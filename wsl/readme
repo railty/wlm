@@ -10,7 +10,7 @@ also need to have "tds_version: 70" to make tiny-tds work
 2. gem install bundler:1.17.3
 3. bundle update
 4. sudo apt install nodejs
-
+5. bundle exec rake assets:precompile
 
 powershell setup (under admin)
 Set-ExecutionPolicy RemoteSigned
