@@ -25,3 +25,4 @@ pyoo/__pycache__
 
 /config/database.*
 /public/system/**
+public/assets
