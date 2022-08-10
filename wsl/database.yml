@@ -1,0 +1,21 @@
+default: &default
+  adapter: sqlserver
+  encoding: utf8
+  timeout: 15000
+
+wlm: &wlm
+  <<: *default
+  host: WM11162.local
+  port: 1433
+  database: Pris
+  username: 
+  password: 
+
+development:
+  <<: *wlm
+
+test:
+  <<: *default
+
+production:
+  <<: *wlm
